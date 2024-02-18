@@ -1,0 +1,65 @@
+{% load i18n %}
+{% load static %}
+<header>
+  <section class="hero py-3 is-main-bg">
+    <div class="is-flex hero-body is-justify-content-space-between">
+      <div>
+        {% if LANGUAGE_CODE == 'en' %}
+        <p class="title is-white mb-20">University of AL-Qadisiyah</p>
+        <p class="has-text-weight-semibold is-white is-center mb-20">The University Staff Biography</p>
+        {% else %}
+        <p class="title is-white is-arabic mb-20">جامعــــــــــة القادسيــــــــة</p>
+        <p class="has-text-weight-semibold is-arabic is-white mb-20">السيرة الذاتية لتدريسي الجامعة</p>
+        {% endif %}
+      </div>
+      <div>
+        <img src="{% static './assets/icons/quniv.svg' %}" width="200" height="200" />
+      </div>
+    </div>
+    <div class="is-flex mx-3 head-btn" >
+
+      <div class="lang my-2">
+        <a href="{% url 'language' pagepath=request.path %}">
+        <i class="bi bi-translate is-white title"></i>
+        </a>
+      </div>
+
+      {% if request.user == bio.owner or request.user.is_superuser %}
+      {% if editpage %}
+      <div class="lang my-2">
+        <a href="{% url 'biopage' slug=settings.slug %}">
+          <i class="bi bi-eye is-white title"></i>
+        </a>
+      </div>
+      {% else %}
+      <div class="lang my-2">
+        <a href="{% url 'edit' slug=settings.slug %}">
+          <i class="bi bi-pencil-square is-white title"></i>
+        </a>
+      </div>
+      {% endif %}
+      {% endif %}
+
+      <div class="login my-2">
+        <a href="{% url 'homepage' %}">
+          <i class="bi bi-search is-white title"></i>
+        </a>
+      </div>
+
+      {% if user.is_anonymous %}
+      <div class="login my-2">
+        <a href="{% url 'signin' %}">
+          <i class="bi bi-box-arrow-in-right is-white title"></i>
+        </a>
+      </div>
+      {% else %}
+      <div class="login my-2">
+        <a href="{% url 'signout' %}">
+          <i class="bi bi-box-arrow-right is-white title"></i>
+        </a>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+</header>

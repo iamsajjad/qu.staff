@@ -1,0 +1,46 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include './includes/head.html' %}
+    <title>{{ bio.full_name }}</title>
+  </head>
+
+  <body>
+
+    {% include './includes/header.html' %}
+    {% include './includes/personal.html' %}
+    {% include './includes/publications.html' %}
+    {% include './includes/links.html' %}
+
+    <div class="box is-section mx-6 my-3">
+      {% if LANGUAGE_CODE == 'en' %}
+      <h1 class="is-main is-font-md p-3">Direct Link to this page</h1>
+      {% else %}
+      <h1 class="is-main is-arabic is-font-md p-3">الرابط المباشر لهذه الصفحة</h1>
+      {% endif %}
+      <div class="is-flex is-justify-content-start">
+        <div class="is-flex is-flex-direction-row m-3 is-full-width">
+          <input id="enurl" class="is-center input my-1" type="text" value="{{ request.build_absolute_uri }}" disabled />
+          <button class="p-3 is-pointer" onclick="copy('{{ request.build_absolute_uri }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+
+    {% if not bio.full_name %}
+
+    <div class="box p-6 m-6 ">
+      {% if LANGUAGE_CODE == 'en' %}
+        <h1 class="has-text-weight-semibold is-main m-6">Please complete profile setup</h1><br>
+      {% else %}
+        <h1 class="has-text-weight-semibold is-main m-6 is-arabic">رجاءاً أكمل أعداد الملف الشخصي</h1>
+      {% endif %}
+    </div>
+
+    {% endif %}
+
+    {% include './includes/footer.html' %}
+  </body>
+  <script src="{% static 'js/main.js' %}"></script>
+</html>

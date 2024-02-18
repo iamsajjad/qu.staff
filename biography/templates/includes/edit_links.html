@@ -1,0 +1,110 @@
+{% load i18n %}
+{% load static %}
+<div class="box is-section mx-4 mt-2 mb-2 is-flex is-flex-direction-row is-justify-content-space-between" >
+  <div class="is-flex is-flex-direction-row">
+    <i data-target="modal-link-new"
+      class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
+
+    <p class="is-main is-font-md p-3">Links</p>
+
+    <i data-target="modal-link-new"
+      class="bi bi-plus-circle-fill is-main-icon link-trigger-edit is-clickable"></i>
+  </div>
+
+  <i id="links_btn"
+    class="bi bi-caret-down-fill is-main-icon is-pointer"></i>
+
+</div>
+
+<form action="{% url 'new_link' slug=settings.slug %}" method="post">{% csrf_token %}
+  <div id="modal-link-new" class="modal custom-modal is-section">
+    <div class="modal-background"></div>
+
+    <div class="modal-content modal-card is-full-width">
+      <div class="box">
+
+        <div class="is-flex my-3 is-flex-direction-column">
+          <p class="is-main is-font-md my-2">Link</p>
+          <input
+            class="input is-normal"
+            type="text"
+            placeholder="New link here ... "
+            name="url"
+          />
+        </div>
+        <button type="submit" class="button is-main-bg is-rounded is-white">Save</button>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+</form>
+
+{% if bio.links.all %}
+<div class="box is-section mx-4 mb-6" id="links_part">
+
+  {% for link in bio.links.all %}
+  <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
+    <div class="is-flex is-links-container is-justify-content-space-between is-align-items-center is-full-width" > <div class="is-flex is-flex-direction-row">
+      <i class="bi bi-link" style="font-size: 50px"></i>
+      <div class="is-main mt-3 pt-2 ml-2 is-underlined" style="overflow-x: auto" >
+        <a href="{{ link.url }}">{{ link.url }}</a>
+      </div>
+    </div>
+      <div class="is-flex is-flex-direction-row" style="gap: 7px">
+
+        <i data-target="modal-link-delete-{{ link.id }}"
+          class="bi bi-trash3 is-mid-icon is-red modal-trigger-delete is-clickable"></i>
+
+        <i data-target="modal-link-edit-{{ link.id }}"
+          class="bi bi-pencil is-mid-icon is-green link-trigger-edit is-clickable"></i>
+
+      </div>
+    </div>
+  </div>
+
+  <form action="{% url 'edit_link' slug=settings.slug linkid=link.id %}" method="post">{% csrf_token %}
+    <div id="modal-link-edit-{{ link.id }}" class="modal custom-modal is-section">
+      <div class="modal-background"></div>
+
+      <div class="modal-content modal-card is-full-width">
+        <div class="box">
+
+          <div class="is-flex my-3 is-flex-direction-column">
+            <p class="is-main is-font-md my-2">Link</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="New link here ... "
+              value="{{ link.url }}"
+              name="url"
+            />
+          </div>
+          <button type="submit" class="button is-main-bg is-rounded is-white">Save</button>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </form>
+
+  <form action="{% url 'delete_link' slug=settings.slug linkid=link.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div id="modal-link-delete-{{ link.id }}" class="modal custom-modal is-section">
+      <div class="modal-background"></div>
+
+      <div class="modal-content modal-card is-full-width">
+        <div class="box">
+
+          <p class="is-main is-font-md m-6">Are you sure you want to delete this Link ?</p>
+
+          <button type="submit" class="button is-danger is-rounded is-white">Delete</button>
+        </div>
+      </div>
+      <button class="modal-close is-large" mx-6 aria-label="close">Close</button>
+    </div>
+  </form>
+
+  {% endfor %}
+
+</div>
+
+{% endif %}
+

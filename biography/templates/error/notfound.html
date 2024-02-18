@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include '../includes/head.html' %}
+  </head>
+
+  <body>
+
+    <header>
+      <section class="hero py-3 is-main-bg">
+        <div class="is-flex hero-body is-justify-content-space-between">
+          <div>
+            {% if LANGUAGE_CODE == 'en' %}
+            <p class="title is-white mb-20">University of AL-Qadisiyah</p>
+            <p class="has-text-weight-semibold is-white is-center mb-20">The University Staff Biography</p>
+            {% else %}
+            <p class="title is-white is-arabic mb-20">جامعــــــــــة القادسيــــــــة</p>
+            <p class="has-text-weight-semibold is-arabic is-white mb-20">السيرة الذاتية لتدريسي الجامعة</p>
+            {% endif %}
+          </div>
+          <div>
+            <img src="{% static './assets/icons/quniv.svg' %}" width="200" height="200" />
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <div class="title is-white m-6 is-center">
+      <h1>Page Not Found</h1>
+    </div>
+
+    <section class="is-main-bg p-4 footer">
+      <div class="columns">
+        <div class="column is-white is-four-fifths">
+          Technical Support <i class="bi bi-envelope-at-fill is-white"></i> : <a class="is-white" href="mailto:cc@qu.edu.iq">cc@qu.edu.iq</a>
+        </div>
+      </div>
+
+      {% if LANGUAGE_CODE == 'en' %}
+      <div class="copyright is-white has-text-centered">
+        Copyright &copy<script>document.write(new Date().getFullYear())</script>
+        <strong>
+          <span>
+            <a href="mailto:sajjad.aldalwachee@gmail.com">
+              <span class="px-1 is-white">Sajjad alDalwachee</span>
+              <i class="bi bi-envelope-at-fill is-white"></i>
+            </a>
+          </span>
+        </strong>. All Rights Reserved
+        <br><strong class="is-white">University of AL-Qadisiyah | Electroinc Computer Center</strong>
+      </div>
+      {% else %}
+      <div class="copyright is-white has-text-centered">
+        Copyright &copy<script>document.write(new Date().getFullYear())</script>
+        <strong>
+          <span>
+            <a href="mailto:sajjad.aldalwachee@gmail.com">
+              <span class="px-1 is-white is-arabic">سجاد الدلوجي</span>
+              <i class="bi bi-envelope-at-fill is-white"></i>
+            </a>
+          </span>
+        </strong><span class="is-white is-arabic">. جميع الحقوق محفوظة</span>
+        <br><a href="https://cc.qu.edu.iq" target="_blank"><strong class="is-white is-arabic">جامعة القادسية | مركز الحاسبة الألكترونية</strong></a>
+      </div>
+      {% endif %}
+
+    </section>
+  </body>
+</html>

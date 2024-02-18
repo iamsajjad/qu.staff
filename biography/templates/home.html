@@ -1,0 +1,89 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include './includes/head.html' %}
+    <title>UoQ | CV project</title>
+  </head>
+
+  <body>
+
+    {% include 'includes/header.html' %}
+
+    <div class="box is-section mx-6 my-3">
+      {% if LANGUAGE_CODE == 'en' %}
+      <h1 class="is-main is-font-md p-3">Search for a staff mamber</h1>
+      {% else %}
+      <h1 class="is-main is-arabic is-font-md p-3">البحث عن تدريسي</h1>
+      {% endif %}
+      <div class="is-flex is-justify-content-start">
+        <form class="is-flex is-flex-direction-row m-3 is-full-width" action="{% url 'search' %}" method="get">
+          <input class="is-center input my-1" type="text" value="" name="query" type="text" autofocus
+                 {% if LANGUAGE_CODE == 'en' %}
+                 placeholder="Search for a staff memeber ..."
+                 {% else %}
+                 placeholder="البحث عن تدريسي ..."
+                 {% endif %}
+          />
+          <button class="search-btn" ><i class="bi bi-search" aria-hidden="true"></i></button>
+        </form>
+      </div>
+    </div>
+
+    {% if bios %}
+
+    <div class="box is-section mx-6 my-3">
+
+      {% if LANGUAGE_CODE == 'en' %}
+      <div class="is-flex is-justify-content-start">
+        <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
+        <p class="is-main is-font-md p-3">Random Staff Biograhpy</p>
+      </div>
+      {% else %}
+      <div class="is-flex is-justify-content-end mb-4">
+        <p class="is-main is-font-md p-3 is-arabic">سيرة ذاتية لبعض التدريسين (عشوائياً)</p>
+        <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
+      </div>
+      {% endif %}
+
+      {% for bio in bios.all %}
+        {% if bio.full_name %}
+        {% if LANGUAGE_CODE == 'en' %}
+        <a target="_blank" href="/@/{{ bio.slug }}">
+        {% else %}
+        <a target="_blank" href="/@/{{ bio.slug }}" style="direction:rtl">
+        {% endif %}
+          <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
+            <div class="is-flex is-links-container is-align-items-center is-full-width">
+              <img class="is-min-image" src="{{ bio.image.url }}" alt="BIO image">
+              <div class="is-right-border"></div>
+              <div  class="is-main " style=" overflow-x: auto;">
+                  {% if LANGUAGE_CODE == 'en' %}
+                    {% if bio.specialty %}
+                      <span class="tag is-info is-light">{{ bio.specialty }}</span>
+                    {% endif %}
+                    <span class="my-3 is-white is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
+                  {% else %}
+                    {% if bio.ar_specialty %}
+                      <span class="tag is-info is-light is-arabic">{{ bio.ar_specialty }}</span>
+                    {% endif %}
+                    <span class="my-3 is-white is-arabic is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small is-arabic"> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </a>
+        {% endif %}
+      {% endfor %}
+
+
+    </div>
+
+    {% endif %}
+
+    {% include 'includes/footer.html' %}
+
+  </body>
+  <script src="{% static 'js/main.js' %}"></script>
+</html>

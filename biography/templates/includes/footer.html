@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load static %}
+<section class="is-main-bg p-4 footer">
+  <div class="columns">
+    <div class="column is-white is-four-fifths">
+      Technical Support <i class="bi bi-envelope-at-fill is-white"></i> : <a class="is-white" href="mailto:cc@qu.edu.iq">cc@qu.edu.iq</a>
+    </div>
+    {% if not request.user.is_anonymous %}
+    <div class="is-left-border mt-3"></div>
+    <div class="column">
+      <div class="columns">
+        <section class="column has-text-centered">
+          <div class="is-white title">{{ status.publications }}</div>
+          <div class="is-white">Publications</div>
+        </section>
+        <section class="column has-text-centered">
+          <div class="is-white title">{{ status.links }}</div>
+          <div class="is-white">Links</div>
+        </section>
+      </div>
+      <section class="has-text-centered">
+        <div class="is-white title">{{ status.bios }}</div>
+        <div class="is-white">BIOs</div>
+      </section>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if LANGUAGE_CODE == 'en' %}
+  <div class="copyright is-white has-text-centered">
+    Copyright &copy<script>document.write(new Date().getFullYear())</script>
+    <strong>
+      <span>
+        <a href="mailto:sajjad.aldalwachee@gmail.com">
+          <span class="px-1 is-white">Sajjad alDalwachee</span>
+          <i class="bi bi-envelope-at-fill is-white"></i>
+        </a>
+      </span>
+    </strong>. All Rights Reserved
+    <br><strong class="is-white">University of AL-Qadisiyah | Electroinc Computer Center</strong>
+  </div>
+  {% else %}
+  <div class="copyright is-white has-text-centered">
+    Copyright &copy<script>document.write(new Date().getFullYear())</script>
+    <strong>
+      <span>
+        <a href="mailto:sajjad.aldalwachee@gmail.com">
+          <span class="px-1 is-white is-arabic">سجاد الدلوجي</span>
+          <i class="bi bi-envelope-at-fill is-white"></i>
+        </a>
+      </span>
+    </strong><span class="is-white is-arabic">. جميع الحقوق محفوظة</span>
+    <br><a href="https://cc.qu.edu.iq" target="_blank"><strong class="is-white is-arabic">جامعة القادسية | مركز الحاسبة الألكترونية</strong></a>
+  </div>
+  {% endif %}
+
+</section>

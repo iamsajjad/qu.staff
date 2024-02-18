@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load static %}
+
+{% if bio.links.all %}
+
+<div class="box is-section mx-6 my-3">
+
+  {% if LANGUAGE_CODE == 'en' %}
+  <div class="is-flex is-justify-content-start">
+    <i data-target="modal-link-new"
+      class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
+    <p class="is-main is-font-md p-3">Links</p>
+  </div>
+  {% else %}
+  <div class="is-flex is-justify-content-end mb-4">
+    <p class="is-main is-font-md p-3 is-arabic">الروابط</p>
+    <i data-target="modal-link-new"
+      class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
+  </div>
+  {% endif %}
+
+  <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
+
+    {% for link in bio.links.all %}
+    <div class="is-flex is-links-container is-align-items-center is-full-width">
+      <i class="bi bi-link" style="font-size: 50px"></i>
+      <div class="is-right-border"></div>
+      <div  class="is-main pt-2 ml-2 is-underlined" style=" overflow-x: auto;">
+        <a target="_blank" href="{{ link.url }}">{{ link.url }}</a>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endif %}

@@ -1,0 +1,315 @@
+{% load i18n %}
+{% load static %}
+<div class="mx-6 my-4">
+  <section class="is-flex is-justify-content-center is-mobile">
+    <div style="width: auto; position: relative">
+      <div class="is-white-bg p-1 is-rounded button is-avatar is-hidden-overflow">
+        <img class="image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
+      </div>
+      {% if bio.full_name %}
+        {% if LANGUAGE_CODE == 'en' %}
+        <p class="my-3 is-white is-font-md">{% if bio.academic_title %}<span class="tag is-primary is-light is-medium"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</p>
+        {% else %}
+        <p class="my-3 is-white is-font-md is-arabic">{{ bio.ar_full_name }} {% if bio.ar_academic_title %}<span class="tag is-primary is-light is-medium is-arabic">{{ bio.ar_academic_title }}</span>{% endif %}</p>
+        {% endif %}
+      {% endif %}
+    </div>
+  </section>
+</div>
+<div class="box is-section mx-4 mt-2 mb-2 is-flex is-flex-direction-row is-justify-content-space-between" >
+  <div class="is-flex is-flex-direction-row">
+    <i data-target="modal-link-new"
+      class="bi bi-person-fill is-main-icon link-trigger-edit is-clickable"></i>
+
+    <p class="is-main is-font-md p-3">Personal Informations</p>
+
+  </div>
+
+  <i id="personal_btn"
+    class="bi bi-caret-down-fill is-main-icon is-pointer"></i>
+
+</div>
+
+<form id="BioForm" action="{% url 'edit' slug=settings.slug %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+  <div id="personal_part" class="box is-section mx-4 mb-2 is-flex-wrap-wrap is-flex is-flex-direction-column" >
+
+    <div class="my-2">
+      <section class="is-flex is-justify-content-center is-mobile">
+        <div style="width: auto; position: relative">
+          <p class="my-3 is-font-md is-arabic">المعلومات بللغة العربية</p>
+        </div>
+      </section>
+    </div>
+
+    <hr class="navbar-divider my-3" />
+
+    <div class="is-flex is-flex-direction-row">
+      <div class="is-flex is-full-width is-flex-direction-column mx-2">
+        <p class="is-main my-1 is-font-sm is-arabic">الجنسية</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="ar_nationality" class="is-arabic" required>
+            {% if bio.ar_nationality %}
+            <option selected value="{{ bio.ar_nationality }}">{{ bio.ar_nationality }}</option>
+            {% else %}
+            <option value="عراقي">{% trans "عراقي" %}</option>
+            {% endif %}
+          </select>
+        </div>
+      </div>
+      <div class="is-full-width is-flex is-flex-direction-column m-3">
+        <p class="is-main is-font-sm is-arabic">الأسم الكامل</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">الكلية أو المركز</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_college" value="{{ bio.ar_college }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">القب العلمي</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="ar_academic_title" class="is-arabic" required>
+            {% if bio.ar_academic_title %}
+            <option selected value="{{ bio.ar_academic_title }}">{{ bio.ar_academic_title }}</option>
+            {% else %}
+            <option selected value="">بلا</option>
+            {% endif %}
+            <option value="أستاذ">أستاذ</option>
+            <option value="أستاذ مساعد">أستاذ مساعد</option>
+            <option value="مدرس">مدرس</option>
+            <option value="مدرس مساعد">مدرس مساعد</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">التخصص</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_major" value="{{ bio.ar_major }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">القسم أو الشعبة أو الوحدة</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_department" value="{{ bio.ar_department }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">المهنة</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_occupation" value="{{ bio.ar_occupation }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">التخصص الدقيق</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_specialty" value="{{ bio.ar_specialty }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">اللغات الاخرى</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_other_langs" value="{{ bio.ar_other_langs }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">اللغة الأم</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_mother_lang" value="{{ bio.ar_mother_lang }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">القضاء</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_district" value="{{ bio.ar_district }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">المحافظة</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_state" value="{{ bio.ar_state }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">تاريخ أول مباشرة</p>
+        <input class="is-center input my-1" type="date" name="ar_direct_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_direct_date|date:'Y-m-d' }}" required />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">تاريخ التعيين</p>
+        <input class="is-center input my-1" type="date" name="ar_hiring_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_hiring_date|date:'Y-m-d' }}" required />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm is-arabic">المنصب</p>
+        <input class="is-center input my-1 is-arabic" type="text" name="ar_position" value="{{ bio.ar_position }}"/>
+      </div>
+    </div>
+
+    <hr class="navbar-divider my-3" />
+
+    <button type="submit" class="button is-rounded is-main-bg is-white m-3 is-arabic">حفظ</button>
+
+    <div class="my-2">
+      <section class="is-flex is-justify-content-center is-mobile">
+        <div style="width: auto; position: relative">
+          <p class="my-3 is-font-md">English Informations</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="is-flex is-flex-direction-row">
+      <div class="is-full-width is-flex is-flex-direction-column m-3">
+        <p class="is-main is-font-sm">Full name</p>
+        <input class="is-center input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
+      </div>
+      <div class="is-flex is-flex-direction-column my-3 is-full-width">
+        <p class="is-main is-font-sm">Birthday</p>
+        <input class="is-center input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row">
+      <div class="is-flex is-full-width is-flex-direction-column mx-2">
+        <p class="is-main my-1 is-font-sm">Gender</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="gender" class="is-center" required>
+            {% if bio.gender == 'Male' %}
+            <option selected value="Male">Male</option>
+            <option value="Female">Female</option>
+            {% else %}
+            <option value="Male">Male</option>
+            <option selected value="Female">Female</option>
+            {% endif %}
+          </select>
+        </div>
+      </div>
+      <div class="is-flex is-full-width is-flex-direction-column mx-2">
+        <p class="is-main my-1 is-font-sm">Nationality</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="nationality" class="is-center" required>
+              {% if bio.nationality %}
+              <option selected value="{{ bio.nationality }}">{{ bio.nationality }}</option>
+              {% else %}
+              <option selected value="Iraqi">Iraqi</option>
+              {% endif %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Position</p>
+        <input class="is-center input my-1" type="text" name="position" value="{{ bio.position }}"/>
+      </div>
+      <div class="is-flex is-full-width is-flex-direction-column mx-2">
+        <p class="is-main my-1 is-font-sm">Degree</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="degree" class="is-center" required>
+            {% if bio.degree == 'PhD' %}
+            <option selected value="PhD">PhD</option>
+            <option value="MSc">MSc</option>
+            <option value="Higher Diploma">Higher Diploma</option>
+            <option value="BSc">BSc</option>
+            {% elif bio.degree == 'MSc' %}
+            <option value="PhD">PhD</option>
+            <option selected value="MSc">MSc</option>
+            <option value="Higher Diploma">Higher Diploma</option>
+            <option value="BSc">BSc</option>
+            {% elif bio.degree == 'Higher Diploma' %}
+            <option value="PhD">PhD</option>
+            <option value="MSc">MSc</option>
+            <option selected value="Higher Diploma">Higher Diploma</option>
+            <option value="BSc">BSc</option>
+            {% else %}
+            <option value="PhD">PhD</option>
+            <option value="MSc">MSc</option>
+            <option value="Higher Diploma">Higher Diploma</option>
+            <option selected value="BSc">BSc</option>
+            {% endif %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Academic Title</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="academic_title" class="is-center" required>
+            {% if bio.academic_title %}
+            <option selected value="{{ bio.academic_title }}">{{ bio.academic_title }}</option>
+            {% else %}
+            <option selected value="">Without</option>
+            {% endif %}
+            <option value="Professor">Professor</option>
+            <option value="Assistant Professor">Assistant Professor</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Teaching Assistant">Teaching Assistant</option>
+          </select>
+        </div>
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">College / Center</p>
+        <input class="is-center input my-1" type="text" name="college" value="{{ bio.college }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Department</p>
+        <input class="is-center input my-1" type="text" name="department" value="{{ bio.department }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Major</p>
+        <input class="is-center input my-1" type="text" name="major" value="{{ bio.major }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Specialty</p>
+        <input class="is-center input my-1" type="text" name="specialty" value="{{ bio.specialty }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Occupation</p>
+        <input class="is-center input my-1" type="text" name="occupation" value="{{ bio.occupation }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Mother Language</p>
+        <input class="is-center input my-1" type="text" name="mother_lang" value="{{ bio.mother_lang }}" />
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Other Languages</p>
+        <input class="is-center input my-1" type="text" name="other_langs" value="{{ bio.other_langs }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Personal Email</p>
+        <input class="is-center input my-1" type="email" name="personal_email" value="{{ bio.personal_email }}"/>
+      </div>
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Work Email</p>
+        <input class="is-center input my-1" type="email" name="work_email" value="{{ bio.work_email }}" />
+      </div>
+    </div>
+
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between" >
+      <div class="is-flex is-flex-direction-column m-3 is-full-width">
+        <p class="is-main is-font-sm">Personal Photo</p>
+        <input class="is-center input my-1" id="image" type="file" onchange="fileSize(1);" name="image" />
+      </div>
+    </div>
+
+    <button type="submit" class="button is-rounded is-main-bg is-white m-3">Save</button>
+
+
+  </div>
+</form>

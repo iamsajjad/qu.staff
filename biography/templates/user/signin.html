@@ -1,0 +1,61 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include '../includes/head.html' %}
+    <title>UoQ | CV project</title>
+  </head>
+  <body>
+    {% include '../includes/header.html' %}
+    <div class="box is-section m-6">
+      <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
+        <form id="SigninForm" action="{% url 'signin' %}" method="post">{% csrf_token %}
+          <div class="is-flex is-flex-direction-column is-align-items-center">
+            <div class="is-flex is-flex-direction-column">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">Email</p>
+              {% else %}
+              <p class="is-main my-2 is-arabic is-font-md">البريد الألكتروني</p>
+              {% endif %}
+              <input
+                class="input is-normal is-full-width"
+                type="text"
+                placeholder="example@qu.edu.iq"
+                name="username"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">Password</p>
+              {% else %}
+              <p class="is-main my-2 is-arabic is-font-md">الرمز السري</p>
+              {% endif %}
+              <input class="input is-normal is-full-width" type="password" name="password" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <div>
+          <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="SigninForm">
+            {% if LANGUAGE_CODE == 'en' %}
+            <p>Sign in</p>
+            {% else %}
+            <p class="is-arabic">تسجيل الدخول</p>
+            {% endif %}
+          </button>
+        </div>
+        <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'register' %}">
+          {% if LANGUAGE_CODE == 'en' %}
+          <p>Register</p>
+          {% else %}
+          <p class="is-arabic">أنشاء حساب</p>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    {% include '../includes/footer.html' %}
+  </body>
+  <script src="{% static 'js/main.js' %}"></script>
+</html>

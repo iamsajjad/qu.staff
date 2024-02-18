@@ -1,0 +1,64 @@
+
+# vim editor
+
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.log
+local_settings.py
+*_initial.py
+db.sqlite3-journal
+db.sqlite3
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Docker
+dockerdata/
+
+# migrations
+/biography/**/migrations/*
+!/biography/**/migrations/__init__.py
+
+# Translations
+*.mo
+*.pot
+
+# collectstatic
+/static
+
+# generated service files
+/config/scripts/**/*.service
+
+# user uploaded images
+/biography/media/user/images/**/*
+

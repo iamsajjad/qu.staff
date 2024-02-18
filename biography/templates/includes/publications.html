@@ -1,0 +1,172 @@
+{% load i18n %}
+{% load static %}
+
+{% if bio.publications.all %}
+
+<div class="box is-section mx-6">
+
+  {% if LANGUAGE_CODE == 'en' %}
+  <div class="is-flex is-justify-content-start mb-4">
+    <i data-target="modal-pub-new"
+      class="bi bi-journal-check is-main-icon link-trigger-edit is-clickable"></i>
+    <p class="is-main is-font-md p-3">Publications</p>
+  </div>
+  {% else %}
+  <div class="is-flex is-justify-content-end mb-4">
+    <p class="is-main is-font-md p-3 is-arabic">المنشورات</p>
+    <i data-target="modal-pub-new"
+      class="bi bi-journal-check is-main-icon link-trigger-edit is-clickable"></i>
+  </div>
+  {% endif %}
+
+  <div class="is-flex is-flex-direction-row is-full-width">
+
+    <section class="is-full-width ml-3"
+      style="overflow-y: auto; max-height: 800px" >
+
+      {% for pub in bio.publications.all %}
+      <div data-target="modal-pub-see-{{ pub.id }}" class="modal-trigger-edit is-clickable is-gray-bg p-2 my-2 is-full-width" >
+        <div class="my-2 is-main">
+          {{ pub.title }}
+        </div>
+        <div style="color: gray">
+          {{ pub.journal }}, {{ pub.volume }}, ({{ pub.issue }}), {{ pub.pages }}
+        </div>
+      </div>
+
+      <div>
+        <div id="modal-pub-see-{{ pub.id }}" class="modal custom-modal">
+          <div class="modal-background"></div>
+
+          <div class="modal-content modal-card is-full-width">
+            <div class="box">
+              <p class="is-font-md my-4 is-main is-centered">
+                {{ pub.title }}
+              </p>
+              <div class="is-flex is-flex-direction-column">
+                <p class="is-main my-2">{% trans 'Title' %}</p>
+                <input
+                  class="input is-normal"
+                  type="text"
+                  placeholder="write title here ... "
+                  value="{{ pub.title }}"
+                  name="title"
+                  disabled
+                />
+              </div>
+              <div class="is-flex is-flex-direction-row is-justify-content-space-between is-flex-wrap-wrap is-full-width">
+                <div class="is-flex is-flex-direction-column mr-4">
+                  <p class="is-main my-2">{% trans 'Researchers' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="text"
+                    placeholder="write researchers names here ... "
+                    value="{{ pub.researchers }}"
+                    name="researchers"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Journal' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="text"
+                    placeholder="write journal name here ... "
+                    value="{{ pub.journal }}"
+                    name="journal"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Volume' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="number"
+                    placeholder="enter volume number here ... "
+                    value="{{ pub.volume }}"
+                    name="volume"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Issue' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="number"
+                    placeholder="enter issue number here ... "
+                    value="{{ pub.issue }}"
+                    name="issue"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Pages' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="text"
+                    placeholder="enter pages numbers here ... "
+                    value="{{ pub.pages }}"
+                    name="pages"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Book' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="text"
+                    placeholder="enter book here ... "
+                    value="{{ pub.book }}"
+                    name="book"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'URL' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="text"
+                    placeholder="enter URL link here ... "
+                    value="{{ pub.url }}"
+                    name="url"
+                    disabled
+                  />
+                </div>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="is-main my-2">{% trans 'Date' %}</p>
+                  <input
+                    class="input is-normal"
+                    type="date"
+                    placeholder="enter publication date here ... "
+                    value="{{ pub.publication_date|date:'Y-m-d' }}"
+                    name="publication_date"
+                    disabled
+                  />
+                </div>
+
+                <div class="is-flex my-3 is-flex-direction-column is-full-width">
+                  <p class="is-main my-2">{% trans 'Description' %}</p>
+                  <textarea
+                    class="textarea"
+                    placeholder="write your description here ... "
+                    value="{{ pub.description }}"
+                    name="description"
+                    rows="5"
+                    disabled
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+      </div>
+      {% endfor %}
+
+    </section>
+
+  </div>
+</div>
+
+{% endif %}

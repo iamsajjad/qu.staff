@@ -1,0 +1,286 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+.hr {
+  border: none;
+  height: 3px;
+}
+body {
+  min-height:  100vh;
+  background: #8b98e0;
+}
+#color {
+  border: none;
+  outline: 0;
+  background-color: transparent;
+  width: 100px;
+  height: 40px;
+}
+#color::-moz-color-swatch {
+  border: none;
+}
+
+#color::-webkit-color-swatch {
+  border: none;
+}
+.publication {
+  overflow-y: auto;
+}
+:root {
+  --main-color: #4b58a0;
+  --main-light-color: #afb6e4;
+  --section-color: #faf9f6;
+}
+.hide {
+  display: none !important;
+  transition: all 0.3ms !important;
+}
+.is-section {
+  background-color: var(--section-color) !important;
+}
+.is-pointer {
+  cursor: pointer;
+}
+
+.is-main-bg {
+  background-color: var(--main-color) !important;
+}
+.is-main-light-bg {
+  background-color: var(--main-light-color) !important;
+}
+.is-main {
+  text-align: center;
+  color: var(--main-color) !important;
+}
+.is-center {
+  text-align: center;
+}
+.is-main-light {
+  color: var(--main-light-color);
+}
+.is-white-bg {
+  background-color: white;
+}
+.is-main-light-bg {
+  background-color: #f4f5ff;
+}
+.is-white {
+  color: white !important;
+}
+.is-font-md {
+  font-size: 20px;
+}
+.is-font-sm {
+  font-size: 17px;
+}
+.is-full-width {
+  width: 100%;
+}
+.is-avatar {
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: -100px;
+  transform: translate(-50%, -50%);
+  width: 200px;
+}
+.is-icon {
+  font-size: 20px;
+  color: var(--main-color);
+  margin: 0px 5px;
+}
+.is-mid-icon {
+  font-size: 30px;
+  color: var(--main-color);
+  margin: 0px 5px;
+}
+.is-main-icon {
+  font-size: 40px;
+  color: var(--main-color);
+  margin: 0px 5px;
+}
+.is-red {
+  color: #d8644b;
+}
+.is-green {
+  color: #3e7d0d;
+}
+.is-right-border {
+  border-right: 3px solid rgb(192, 189, 189);
+  border-radius: 2px;
+}
+.is-left-border {
+  border-left: 3px solid rgb(192, 189, 189);
+  border-radius: 2px;
+}
+.is-gray-bg {
+  background-color: #fafafa;
+}
+.is-active-dot {
+  background-color: var(--main-color) !important;
+}
+.is-dot {
+  height: 25px;
+  width: 25px;
+  background-color: var(--main-light-color);
+  border-radius: 50%;
+  display: inline-block;
+}
+.is-dot-col {
+  height: 80px;
+  width: 5px;
+  background-color: #d7d7da;
+}
+
+.is-hidden-overflow {
+  overflow: hidden;
+}
+/* scroll bar style*/
+
+/* For WebKit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var(--main-light-color);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: 30px;
+  scrollbar-color: var(--main-color) var(--main-light-color);
+}
+/* Custom width for modal card */
+.modal-card {
+  max-width: 900px !important; /* Set your desired width */
+  /* height: 650px !important; */
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.is-links-image {
+  width: 60px;
+  height: 60px;
+  /* overflow: auto; */
+  border: 1px solid var(--main-color);
+  background-color: white;
+  border-radius: 20px;
+}
+.is-links-container {
+  flex-direction: row;
+}
+.is-arabic {
+  text-align: center;
+  font-family: 'Readex Pro', serif;
+}
+.lang {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.lang-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  z-index: 99;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+}
+.lang:hover .lang-content {
+  display: block;
+  background-color: white;
+}
+.lang-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+.lang-content a:hover {
+  background-color: var(--main-light-color);
+}
+.login {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+}
+.login-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  z-index: 99;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+}
+.login:hover .login-content {
+  display: block;
+  background-color: white;
+}
+.login-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+.login-content a:hover {
+  background-color: var(--main-light-color);
+}
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 999999px;
+}
+.is-min-image {
+  width: 50px;
+  height: 50px;
+  background: url('your_image.jpg') no-repeat center center;
+  background-size: cover;
+  border-radius: 999999px;
+}
+.search-btn {
+  background-color: transparent;
+  border: none;
+  color: black;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 8px;
+}
+.search-btn:hover {
+  background-color: var(--main-light-color);
+}
+
+.footer {
+  position: sticky;
+  top:  100%;
+}
+
+@media (max-width: 700px) {
+  .is-links-container {
+    flex-direction: column;
+  }
+}
+/* Override Bulma's default styles */
+@media (max-width: 768px) {
+  /* Reset the display property for dropdown menus */
+  .navbar-dropdown {
+    display: block;
+  }
+  .head-btn {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

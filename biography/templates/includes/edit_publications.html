@@ -1,0 +1,304 @@
+{% load i18n %}
+{% load static %}
+<div class="box is-section mx-4 mt-2 mb-2 is-flex is-flex-direction-row is-justify-content-space-between" >
+  <div class="is-flex is-flex-direction-row">
+    <i data-target="modal-pub-new"
+      class="bi bi-journal-check is-main-icon link-trigger-edit is-clickable"></i>
+
+    <p class="is-main is-font-md p-3">Publication</p>
+
+    <i data-target="modal-pub-new"
+      class="bi bi-plus-circle-fill is-main-icon link-trigger-edit is-clickable"></i>
+  </div>
+
+  <i id="publication_btn"
+    class="bi bi-caret-down-fill is-main-icon is-pointer"></i>
+
+</div>
+
+<form action="{% url 'new_publication' slug=settings.slug %}" method="post">{% csrf_token %}
+  <div id="modal-pub-new" class="modal custom-modal is-section">
+    <div class="modal-background"></div>
+
+    <div class="modal-content modal-card is-full-width">
+      <div class="box is-section">
+        <p class="is-font-md my-4 is-main is-centered">
+          {% trans 'New Publication' %}
+        </p>
+        <div class="is-flex is-flex-direction-column">
+          <p class="is-main my-2">{% trans 'Title' %}</p>
+          <input
+            class="input is-normal"
+            type="text"
+            placeholder="write title here ... "
+            name="title"
+            required
+          />
+        </div>
+        <div class="is-flex is-flex-direction-row is-justify-content-space-between is-flex-wrap-wrap is-full-width">
+          <div class="is-flex is-flex-direction-column mr-4">
+            <p class="is-main my-2">{% trans 'Researchers' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="write researchers names here ... "
+              name="researchers"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Journal' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="write journal name here ... "
+              name="journal"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Volume' %}</p>
+            <input
+              class="input is-normal"
+              type="number"
+              placeholder="enter volume number here ... "
+              name="volume"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Issue' %}</p>
+            <input
+              class="input is-normal"
+              type="number"
+              placeholder="enter issue number here ... "
+              name="issue"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Pages' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="enter pages numbers here ... "
+              name="pages"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Book' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="enter book here ... "
+              name="book"
+              required
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'URL' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="Normal input"
+              placeholder="enter URL link here ... "
+              name="url"
+            />
+          </div>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Date' %}</p>
+            <input
+              class="input is-normal"
+              type="date"
+              placeholder="enter publication date here ... "
+              name="publication_date"
+              required
+            />
+          </div>
+
+          <div class="is-flex my-3 is-flex-direction-column is-full-width">
+            <p class="is-main my-2">{% trans 'Description' %}</p>
+            <textarea
+              class="textarea"
+              placeholder="Write your description here ..."
+              placeholder="write description here ... "
+              name="description"
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+
+        <button class="button is-main-bg is-rounded is-white">Save</button>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+</form>
+
+{% if bio.publications.all %}
+<div class="box is-section mx-4 publication" id="publication_part">
+
+  {% for pub in bio.publications.all %}
+  <div class="my-2 is-justify-content-space-between is-flex-wrap-wrap p-2 is-gray-bg is-flex is-flex-direction-row" >
+    <div class="is-flex is-flex-direction-column">
+      <div class="is-font-md is-main">
+        {{ pub.title }}
+      </div>
+      <div class="my-2">
+        {{ pub.journal }}, {{ pub.volume }}, ({{ pub.issue }}), {{ pub.pages }}
+      </div>
+    </div>
+    <div class="is-flex is-flex-direction-row" style="gap: 7px">
+      <i data-target="modal-pub-delete-{{ pub.id }}"
+        class="bi bi-trash3 is-mid-icon is-red modal-trigger-delete is-clickable"></i>
+
+      <i data-target="modal-pub-edit-{{ pub.id }}"
+        class="bi bi-pencil is-mid-icon is-green modal-trigger-edit is-clickable"></i>
+    </div>
+  </div>
+
+  <form action="{% url 'edit_publication' slug=settings.slug pubid=pub.id %}" method="post">{% csrf_token %}
+    <div id="modal-pub-edit-{{ pub.id }}" class="modal custom-modal is-section">
+      <div class="modal-background"></div>
+
+      <div class="modal-content modal-card is-full-width">
+        <div class="box is-section">
+          <p class="is-font-md my-4 is-main is-centered">
+            {{ pub.title }}
+          </p>
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2">{% trans 'Title' %}</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="write title here ... "
+              value="{{ pub.title }}"
+              name="title"
+            />
+          </div>
+          <div class="is-flex is-flex-direction-row is-justify-content-space-between is-flex-wrap-wrap is-full-width">
+            <div class="is-flex is-flex-direction-column mr-4">
+              <p class="is-main my-2">{% trans 'Researchers' %}</p>
+              <input
+                class="input is-normal"
+                type="text"
+                placeholder="write researchers names here ... "
+                value="{{ pub.researchers }}"
+                name="researchers"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Journal' %}</p>
+              <input
+                class="input is-normal"
+                type="text"
+                placeholder="write journal name here ... "
+                value="{{ pub.journal }}"
+                name="journal"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Volume' %}</p>
+              <input
+                class="input is-normal"
+                type="number"
+                placeholder="enter volume number here ... "
+                value="{{ pub.volume }}"
+                name="volume"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Issue' %}</p>
+              <input
+                class="input is-normal"
+                type="number"
+                placeholder="enter issue number here ... "
+                value="{{ pub.issue }}"
+                name="issue"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Pages' %}</p>
+              <input
+                class="input is-normal"
+                type="text"
+                placeholder="enter pages numbers here ... "
+                value="{{ pub.pages }}"
+                name="pages"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Book' %}</p>
+              <input
+                class="input is-normal"
+                type="text"
+                placeholder="enter book here ... "
+                value="{{ pub.book }}"
+                name="book"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'URL' %}</p>
+              <input
+                class="input is-normal"
+                type="text"
+                placeholder="enter URL link here ... "
+                value="{{ pub.url }}"
+                name="url"
+              />
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <p class="is-main my-2">{% trans 'Date' %}</p>
+              <input
+                class="input is-normal"
+                type="date"
+                placeholder="enter publication date here ... "
+                value="{{ pub.publication_date|date:'Y-m-d' }}"
+                name="publication_date"
+              />
+            </div>
+
+            <div class="is-flex my-3 is-flex-direction-column is-full-width">
+              <p class="is-main my-2">{% trans 'Description' %}</p>
+              <textarea
+                class="textarea"
+                placeholder="write your description here ... "
+                value="{{ pub.description }}"
+                name="description"
+                rows="5"
+              ></textarea>
+            </div>
+          </div>
+
+          <button class="button is-main-bg is-rounded is-white">Save</button>
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </form>
+
+  <form action="{% url 'delete_publication' slug=settings.slug pubid=pub.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div id="modal-pub-delete-{{ pub.id }}" class="modal custom-modal is-section">
+      <div class="modal-background"></div>
+
+      <div class="modal-content modal-card is-full-width">
+        <div class="box is-section">
+
+          <p class="is-main is-font-md m-6">Are you sure you want to delete this Publication ?</p>
+
+          <button type="submit" class="button is-danger is-rounded is-white">Delete</button>
+        </div>
+      </div>
+      <button class="modal-close is-large" mx-6 aria-label="close">Close</button>
+    </div>
+  </form>
+
+  {% endfor %}
+
+</div>
+
+{% endif %}
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=caddy daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory={projectdir}
+ExecStart=/usr/bin/caddy run --config Caddyfile
+
+[Install]
+WantedBy=multi-user.target
