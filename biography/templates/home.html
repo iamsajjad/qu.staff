@@ -12,21 +12,115 @@
     {% include 'includes/header.html' %}
 
     <div class="box is-section mx-6 my-3">
+      <form action="{% url 'getstaff' %}" method="post">{% csrf_token %}
+        {% if LANGUAGE_CODE == 'en' %}
+        <div class="is-flex is-flex-direction-column is-justify-content-space-between" >
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm">Academic Title</p>
+            <div class="select is-flex is-flex-direction-column">
+              <select id="dropdown" name="academic_title" class="is-center" required>
+                <option value="Professor">Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="Lecturer">Lecturer</option>
+                <option value="Assistant Lecturer">Assistant Lecturer</option>
+              </select>
+            </div>
+          </div>
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm">College / Center</p>
+            <div class="select is-flex is-flex-direction-column">
+              <select id="dropdown" name="college" class="is-center is-arabic" required>
+                <option value="Presidency of the University">Presidency of the University</option>
+                <option value="College of Education">College of Education</option>
+                <option value="College of Administration and Economics">College of Administration and Economics</option>
+                <option value="College of Arts">College of Arts</option>
+                <option value="College of Veterinary Medicine">College of Veterinary Medicine</option>
+                <option value="College of Medicine">College of Medicine</option>
+                <option value="College of Physical Education and Sports Sciences">College of Physical Education and Sports Sciences</option>
+                <option value="College of Science">College of Science</option>
+                <option value="College of Law">College of Law</option>
+                <option value="College of Engineering">College of Engineering</option>
+                <option value="College of Computer Science and Information Technology">College of Computer Science and Information Technology</option>
+                <option value="College of Agriculture">College of Agriculture</option>
+                <option value="College of Education for Women">College of Education for Women</option>
+                <option value="College of Pharmacy">College of Pharmacy</option>
+                <option value="College of Nursing">College of Nursing</option>
+                <option value="College of Dentistry">College of Dentistry</option>
+                <option value="College of Archaeology">College of Archaeology</option>
+                <option value="College of Biotechnology">College of Biotechnology</option>
+                <option value="College of Fine Arts">College of Fine Arts</option>
+              </select>
+            </div>
+          </div>
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm">get staff</p>
+            <button class="button" ><i class="bi bi-search" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        {% else %}
+        <div class="is-flex is-flex-direction-column is-justify-content-space-between" >
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm is-arabic">الكلية أو المركز</p>
+            <div class="select is-flex is-flex-direction-column">
+              <select id="dropdown" name="ar_college" class="is-center is-arabic" required>
+                <option value="رئاسة الجامعة">رئاسة الجامعة</option>
+                <option value="كلية التربية">كلية التربية</option>
+                <option value="كلية الأدارة والأقتصاد">كلية الأدارة والأقتصاد</option>
+                <option value="كلية الأداب">كلية الأداب</option>
+                <option value="كلية الطب البيطري">كلية الطب البيطري</option>
+                <option value="كلية الطب">كلية الطب</option>
+                <option value="كلية التربية البدنية وعلوم الرياضة">كلية التربية البدنية وعلوم الرياضة</option>
+                <option value="كلية العلوم">كلية العلوم</option>
+                <option value="كلية القانون">كلية القانون</option>
+                <option value="كلية الهندسة">كلية الهندسة</option>
+                <option value="كلية علوم الحاسوب وتكنولوجيا المعلومات">كلية علوم الحاسوب وتكنولوجيا المعلومات</option>
+                <option value="كلية الزراعة">كلية الزراعة</option>
+                <option value="كلية التربية للبنات">كلية التربية للبنات</option>
+                <option value="كلية الصيدلة">كلية الصيدلة</option>
+                <option value="كلية التمريض">كلية التمريض</option>
+                <option value="كلية طب الأسنان">كلية طب الأسنان</option>
+                <option value="كلية الأثار">كلية الأثار</option>
+                <option value="كلية التقانات الاحيائية">كلية التقانات الاحيائية</option>
+                <option value="كلية الفنون الجميلة">كلية الفنون الجميلة</option>
+              </select>
+            </div>
+          </div>
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm is-arabic">القب العلمي</p>
+            <div class="select is-flex is-flex-direction-column">
+              <select id="dropdown" name="ar_academic_title" class="is-arabic" required>
+                <option value="أستاذ">أستاذ</option>
+                <option value="أستاذ مساعد">أستاذ مساعد</option>
+                <option value="مدرس">مدرس</option>
+                <option value="مدرس مساعد">مدرس مساعد</option>
+              </select>
+            </div>
+          </div>
+        </div>
+          <div class="is-flex is-flex-direction-column m-3">
+            <p class="is-main is-font-sm is-arabic">عرض التدريسيين</p>
+            <button class="button" ><i class="bi bi-search" aria-hidden="true"></i></button>
+          </div>
+        {% endif %}
+      </form>
+    </div>
+
+    <div class="box is-section mx-6 my-3">
       {% if LANGUAGE_CODE == 'en' %}
-      <h1 class="is-main is-font-md p-3">Search for a staff mamber</h1>
+      <h1 class="is-main is-font-md p-3">Search for a staff memeber</h1>
       {% else %}
       <h1 class="is-main is-arabic is-font-md p-3">البحث عن تدريسي</h1>
       {% endif %}
       <div class="is-flex is-justify-content-start">
         <form class="is-flex is-flex-direction-row m-3 is-full-width" action="{% url 'search' %}" method="get">
-          <input class="is-center input my-1" type="text" value="" name="query" type="text" autofocus
+          <input class="is-center is-normal input is-arabic mx-3" type="text" value="" name="query" type="text" autofocus
                  {% if LANGUAGE_CODE == 'en' %}
-                 placeholder="Search for a staff memeber ..."
+                 placeholder="Write the keyword here"
                  {% else %}
-                 placeholder="البحث عن تدريسي ..."
+                 placeholder="أكتب الكلمة المفتاحية هنا"
                  {% endif %}
           />
-          <button class="search-btn" ><i class="bi bi-search" aria-hidden="true"></i></button>
+          <button class="button is-normal" ><i class="bi bi-search" aria-hidden="true"></i></button>
         </form>
       </div>
     </div>
@@ -50,11 +144,11 @@
       {% for bio in bios.all %}
         {% if bio.full_name %}
         {% if LANGUAGE_CODE == 'en' %}
-        <a target="_blank" href="/@/{{ bio.slug }}">
+        <a target="_blank" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
         {% else %}
-        <a target="_blank" href="/@/{{ bio.slug }}" style="direction:rtl">
+        <a target="_blank" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
         {% endif %}
-          <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
+        <div class="memeber-card m-3 has-background-white p-3">
             <div class="is-flex is-links-container is-align-items-center is-full-width">
               <img class="is-min-image" src="{{ bio.image.url }}" alt="BIO image">
               <div class="is-right-border"></div>
@@ -63,12 +157,12 @@
                     {% if bio.specialty %}
                       <span class="tag is-info is-light">{{ bio.specialty }}</span>
                     {% endif %}
-                    <span class="my-3 is-white is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
+                    <span class="my-3 is-black is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
                   {% else %}
                     {% if bio.ar_specialty %}
                       <span class="tag is-info is-light is-arabic">{{ bio.ar_specialty }}</span>
                     {% endif %}
-                    <span class="my-3 is-white is-arabic is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small is-arabic"> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                    <span class="my-3 is-black is-arabic is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small is-arabic"> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
                   {% endif %}
               </div>
             </div>

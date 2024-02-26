@@ -82,7 +82,7 @@
 
     {% if LANGUAGE_CODE == 'en' %}
 
-    <div class="is-flex is-justify-content-space-around is-flex-wrap-wrap">
+    <div class="personal is-flex is-justify-content-space-around is-flex-wrap-wrap">
       <div class="is-flex is-flex-direction-column">
         {% if bio.academic_title %}
         <div class="my-1">
@@ -153,12 +153,18 @@
           <span><a href="mailto:{{ bio.work_email }}">{{ bio.work_email }}</a></span>
         </div>
         {% endif %}
+        {% if bio.update_date %}
+        <div class="my-1">
+          <span class="is-main">Updated at : </span>
+          <span>{{ bio.update_date|date:"d/m/Y D P" }}</span>
+        </div>
+        {% endif %}
       </div>
     </div>
 
     {% else %}
 
-    <div class="is-flex is-justify-content-space-around is-flex-wrap-wrap">
+    <div class="personal is-flex is-justify-content-space-around is-flex-wrap-wrap">
       <div class="is-flex is-flex-direction-column">
         {% if bio.ar_academic_title %}
         <div class="my-1">
@@ -194,6 +200,12 @@
         <div class="my-1">
           <span class="is-main is-arabic">البريد الشخصي : </span>
           <span><a href="mailto:{{ bio.personal_email }}">{{ bio.personal_email }}</a></span>
+        </div>
+        {% endif %}
+        {% if bio.update_date %}
+        <div class="my-1">
+          <span class="is-main is-arabic">أخر تحديث في : </span>
+          <span class="is-arabic">{{ bio.update_date|date:"d/m/Y D P" }}</span>
         </div>
         {% endif %}
       </div>

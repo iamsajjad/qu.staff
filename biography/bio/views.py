@@ -49,6 +49,7 @@ def biopage(request, slug):
     }
 
     response = {
+        'biopage': True,
         'settings': settings,
         'bio': bio,
         'status': status,
@@ -97,5 +98,29 @@ def edit(request, slug):
                 'status': status,
             }
             return render(request, 'edit_bio.html', response)
+    return redirect(f'{slug}')
+
+@login_required
+def printpage(request, slug):
+
+    settings = Settings.objects.filter(slug=slug)
+
+    if len(settings) == 0:
+        return redirect('notfound')
+    else:
+        settings = settings[0]
+
+    bio = Bio.objects.get(owner=settings.user)
+
+    # to edit bio the user must be `superuser` or `owner`
+    authorized = request.user.is_superuser or request.user == bio.owner
+
+    if authorized:
+
+        response = {
+            'settings': settings,
+            'bio': bio,
+        }
+        return render(request, 'print.html', response)
     return redirect(f'{slug}')
 

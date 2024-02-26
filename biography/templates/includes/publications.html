@@ -25,8 +25,8 @@
       style="overflow-y: auto; max-height: 800px" >
 
       {% for pub in bio.publications.all %}
-      <div data-target="modal-pub-see-{{ pub.id }}" class="modal-trigger-edit is-clickable is-gray-bg p-2 my-2 is-full-width" >
-        <div class="my-2 is-main">
+      <div data-target="modal-pub-see-{{ pub.id }}" class="modal-trigger-edit is-clickable has-background-grey-lighter p-2 my-2 is-full-width" style="border-radius: 8px">
+        <div class="my-2 is-main is-arabic">
           {{ pub.title }}
         </div>
         <div style="color: gray">
@@ -46,7 +46,7 @@
               <div class="is-flex is-flex-direction-column">
                 <p class="is-main my-2">{% trans 'Title' %}</p>
                 <input
-                  class="input is-normal"
+                  class="input has-text-centered is-normal"
                   type="text"
                   placeholder="write title here ... "
                   value="{{ pub.title }}"
@@ -122,15 +122,16 @@
                   />
                 </div>
                 <div class="is-flex is-flex-direction-column">
-                  <p class="is-main my-2">{% trans 'URL' %}</p>
-                  <input
-                    class="input is-normal"
+                  <p class="is-main my-2">{% trans 'Publication URL' %}</p>
+                  <a
+                    class="input is-pointer"
                     type="text"
                     placeholder="enter URL link here ... "
-                    value="{{ pub.url }}"
+                    href="{{ pub.url }}"
                     name="url"
-                    disabled
-                  />
+                    >
+                    {{ pub.url }}
+                  </a>
                 </div>
                 <div class="is-flex is-flex-direction-column">
                   <p class="is-main my-2">{% trans 'Date' %}</p>
@@ -149,11 +150,10 @@
                   <textarea
                     class="textarea"
                     placeholder="write your description here ... "
-                    value="{{ pub.description }}"
                     name="description"
                     rows="5"
                     disabled
-                  ></textarea>
+                  >{{ pub.description }}</textarea>
                 </div>
               </div>
             </div>

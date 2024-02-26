@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load websites %}
 
 {% if bio.links.all %}
 
@@ -10,28 +11,40 @@
     <i data-target="modal-link-new"
       class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
     <p class="is-main is-font-md p-3">Links</p>
+    {% if request.user == bio.owner or request.user.is_superuser %}
+    {% if bio.links.all|isdone %}
+    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm p-3 m-1">Print endorsement<i class="bi bi-printer mx-2"></i></a>
+    {% endif %}
+    {% endif %}
   </div>
   {% else %}
   <div class="is-flex is-justify-content-end mb-4">
+    {% if request.user == bio.owner or request.user.is_superuser %}
+    {% if bio.links.all|isdone %}
+    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm is-arabic p-3 m-1"><i class="bi bi-printer mx-2"></i>طباعة تأييد</a>
+    {% endif %}
+    {% endif %}
     <p class="is-main is-font-md p-3 is-arabic">الروابط</p>
     <i data-target="modal-link-new"
       class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
   </div>
   {% endif %}
 
-  <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
-
-    {% for link in bio.links.all %}
-    <div class="is-flex is-links-container is-align-items-center is-full-width">
-      <i class="bi bi-link" style="font-size: 50px"></i>
-      <div class="is-right-border"></div>
-      <div  class="is-main pt-2 ml-2 is-underlined" style=" overflow-x: auto;">
-        <a target="_blank" href="{{ link.url }}">{{ link.url }}</a>
+    {% for link in bio.links.all|sortsites %}
+    <a target="_blank" href="{{ link.url }}">
+      <div class="m-3 is-main-light-bg p-3 is-clipped" style="border-radius: 8px">
+        <p class="is-size-5 has-text-black">{{ link.name }}</p>
+        <div class="is-flex is-links-container is-align-items-center is-full-width">
+          <i class="bi bi-link has-text-light is-size-2"></i>
+          <div class="is-right-border"></div>
+          <div  class="is-main pt-2 ml-2 is-underlined" style=" overflow-x: auto;">
+            <p class="has-text-dark">{{ link.url }}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
     {% endfor %}
 
-  </div>
 
 </div>
 

@@ -1,0 +1,183 @@
+{% load i18n %}
+{% load static %}
+{% load humanize %}
+{% load websites %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ bio.full_name }} endorsement</title>
+    <link rel="icon" sizes="any" type="image/svg+xml" href="{% static 'assets/icons/quniv.svg' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}" />
+    <link href="{% static 'libs/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/print.css' %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container main">
+      <div>
+        <table class="main-table">
+          <tr>
+            <th>
+              Ministry of Higher Education and Scientific Research
+            </th>
+            <th>
+              وزارة التعليم العالي والبحث العلمي
+            </th>
+          </tr>
+          <tr>
+            <th>
+              University of AL-Qadisiyah
+            </th>
+            <th>
+              جامعة القادسيـــــــــــــــــــــــــــــــة
+            </th>
+          </tr>
+          <tr>
+            <th>
+              Electronic Computer Center
+            </th>
+            <th>
+              مركز الحاسبـــــــــــــــة الألكترونيـــــــــة
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <hr></hr>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              تأييد الأشتراك في المواقع العلمية
+            </th>
+          </tr>
+          <tr>
+            <th class="is-centered">
+              <img class="image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
+            </th>
+            <th class="is-centered">
+              <img class="image" src="{% static 'assets/icons/quniv.svg' %}" alt="UoQ">
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <div class="qrcode is-arabic" id="arqrcode"></div>
+              <script type="text/javascript">
+                var arqrcode = new QRCode(document.getElementById("arqrcode"), {
+                  text: "https://staff.qu.edu.iq/ar/@/{{ bio.slug }}",
+                  width: 128,
+                  height: 128,
+                  colorDark : "#000000",
+                  colorLight : "#ffffff",
+                  correctLevel : QRCode.CorrectLevel.H
+                });
+              </script>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <hr></hr>
+          </tr>
+          <tr>
+            <th>
+              {{ bio.academic_title }} {{ bio.full_name }}
+            </th>
+            <th>
+              {{ bio.ar_academic_title }} {{ bio.ar_full_name }}
+            </th>
+          </tr>
+          <tr>
+            <th>
+              {% if bio.degree == 'PhD' %}
+              <span class="is-main is-arabic">دكتوراه</span>
+              {% elif bio.degree == 'MSc' %}
+              <span class="is-main is-arabic">ماجستير</span>
+              {% elif bio.degree == 'Higher Diploma' %}
+              <span class="is-main is-arabic">دبلوم عالي</span>
+              {% else %}
+              <span class="is-main is-arabic">بكلوريوس</span>
+              {% endif %}
+            </th>
+            <th>
+              الشهادة
+            </th>
+          </tr>
+          <tr>
+            <th>
+              {{ bio.ar_college }}
+            </th>
+            <th>
+              الكلية أو مكان العمل
+            </th>
+          </tr>
+          <tr>
+            <th>
+              {% language 'ar' %}
+              {{ bio.update_date|date:"d/m/Y D P" }}
+              {% endlanguage %}
+            </th>
+            <th>
+              تاريخ أخر تحديث
+            </th>
+          </tr>
+        </table>
+        <table class="table-bordered">
+          <tr>
+            <th colspan="2">
+              <hr></hr>
+            </th>
+          </tr>
+          <tr class="is-bordered">
+            <td colspan="2">روابط حسابات التدريسي في المواقع العلمية</td>
+          </tr>
+          {% for link in bio.links.all|sortsites|neededonly %}
+          <tr class="m-2">
+            <td colspan="1" class="is-bordered ws-name">
+              {{ link.name }}
+            </td>
+            <td colspan="9" class="is-bordered ws-url">
+              {{ link.url }}
+            </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <th colspan="2">
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              ملاحظه : يجب ختم هذا المستند بختم حي بعد التدقيق من قبل مركز الحاسبة الألكترونية في جامعة القادسية
+            </th>
+          </tr>
+        </table>
+      </div>
+      <tr>
+        <th colspan="2">
+          <hr></hr>
+        </th>
+      </tr>
+      <div class="copyright is-white has-text-centered">
+        Copyright &copy<script>document.write(new Date().getFullYear())</script>
+        <strong>
+          <span>
+            <span class="px-1 is-black">cc@qu.edu.iq</span>
+            <i class="bi bi-envelope-at-fill is-white"></i>
+          </span>
+        </strong>. All Rights Reserved
+        <br><strong class="is-white">University of AL-Qadisiyah | Electroinc Computer Center</strong>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+      window.print();
+    })
+  </script>
+</html>

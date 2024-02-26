@@ -5,7 +5,9 @@ from settings.models import Settings
 from bio.models import Bio
 from link.models import Link
 
-from link.forms import LinkForm, DeleteLinkForm
+from link.forms import LinkForm, EditLinkForm, DeleteLinkForm
+
+from link.const import REQUIREDSITES
 
 # Create your views here.
 
@@ -23,6 +25,20 @@ def new(request, slug):
         link = LinkForm(request.POST)
 
         if link.is_valid():
+
+            if REQUIREDSITES.get(request.POST['name'], False) == False:
+                # unknown url name
+                return redirect('edit', slug=settings.slug)
+
+            urlprefix = REQUIREDSITES[request.POST['name']]
+
+            if not request.POST['url'].startswith(urlprefix):
+                # url and url name not match
+                return redirect('edit', slug=settings.slug)
+
+            if len(request.POST['url']) <= len(urlprefix):
+                # if given url is matching only the website prefix
+                return redirect('edit', slug=settings.slug)
 
             link = link.save()
 
@@ -43,11 +59,21 @@ def edit(request, slug, linkid):
 
     if request.method == 'POST' and authorized:
 
-        link = LinkForm(request.POST, instance=link)
+        editlink = EditLinkForm(request.POST, instance=link)
 
-        if link.is_valid():
+        if editlink.is_valid():
 
-            link.save()
+            urlprefix = REQUIREDSITES[link.name]
+
+            if not request.POST['url'].startswith(urlprefix):
+                # url and url name not match
+                return redirect('edit', slug=settings.slug)
+
+            if len(request.POST['url']) <= len(urlprefix):
+                # if given url is matching only the website prefix
+                return redirect('edit', slug=settings.slug)
+
+            editlink.save()
 
     return redirect('edit', slug=settings.slug)
 

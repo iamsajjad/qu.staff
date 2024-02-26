@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load websites %}
 <div class="box is-section mx-4 mt-2 mb-2 is-flex is-flex-direction-row is-justify-content-space-between" >
   <div class="is-flex is-flex-direction-row">
     <i data-target="modal-link-new"
@@ -25,6 +26,13 @@
 
         <div class="is-flex my-3 is-flex-direction-column">
           <p class="is-main is-font-md my-2">Link</p>
+          <div class="select is-flex is-flex-direction-column my-3">
+            <select id="dropdown" name="name" class="is-arabic is-center" required>
+              {% for name in bio.links.all|websites %}
+              <option value="{{ name }}">{{ name }}</option>
+              {% endfor %}
+            </select>
+          </div>
           <input
             class="input is-normal"
             type="text"
@@ -42,12 +50,13 @@
 {% if bio.links.all %}
 <div class="box is-section mx-4 mb-6" id="links_part">
 
-  {% for link in bio.links.all %}
+  {% for link in bio.links.all|sortsites %}
   <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
+    <p class="is-size-5 has-text-black">{{ link.name }}</p>
     <div class="is-flex is-links-container is-justify-content-space-between is-align-items-center is-full-width" > <div class="is-flex is-flex-direction-row">
-      <i class="bi bi-link" style="font-size: 50px"></i>
+      <i class="bi bi-link has-text-light is-size-2"></i>
       <div class="is-main mt-3 pt-2 ml-2 is-underlined" style="overflow-x: auto" >
-        <a href="{{ link.url }}">{{ link.url }}</a>
+        <a target="_blank" class="has-text-black" href="{{ link.url }}">{{ link.url }}</a>
       </div>
     </div>
       <div class="is-flex is-flex-direction-row" style="gap: 7px">

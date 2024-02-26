@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load switchlang %}
 <header>
   <section class="hero py-3 is-main-bg">
     <div class="is-flex hero-body is-justify-content-space-between">
@@ -19,22 +20,22 @@
     <div class="is-flex mx-3 head-btn" >
 
       <div class="lang my-2">
-        <a href="{% url 'language' pagepath=request.path %}">
+        <a href="{{ request.path|switchlang }}">
         <i class="bi bi-translate is-white title"></i>
         </a>
       </div>
 
       {% if request.user == bio.owner or request.user.is_superuser %}
-      {% if editpage %}
+      {% if biopage %}
       <div class="lang my-2">
-        <a href="{% url 'biopage' slug=settings.slug %}">
-          <i class="bi bi-eye is-white title"></i>
+        <a href="{% url 'edit' slug=settings.slug %}">
+          <i class="bi bi-pencil-square is-white title"></i>
         </a>
       </div>
       {% else %}
       <div class="lang my-2">
-        <a href="{% url 'edit' slug=settings.slug %}">
-          <i class="bi bi-pencil-square is-white title"></i>
+        <a href="{% url 'biopage' slug=settings.slug %}">
+          <i class="bi bi-eye is-white title"></i>
         </a>
       </div>
       {% endif %}

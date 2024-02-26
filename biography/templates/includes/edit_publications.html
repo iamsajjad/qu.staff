@@ -28,7 +28,7 @@
         <div class="is-flex is-flex-direction-column">
           <p class="is-main my-2">{% trans 'Title' %}</p>
           <input
-            class="input is-normal"
+            class="input has-text-centered is-normal"
             type="text"
             placeholder="write title here ... "
             name="title"
@@ -97,7 +97,7 @@
             />
           </div>
           <div class="is-flex is-flex-direction-column">
-            <p class="is-main my-2">{% trans 'URL' %}</p>
+            <p class="is-main my-2">{% trans 'Publication URL' %}</p>
             <input
               class="input is-normal"
               type="text"
@@ -141,9 +141,9 @@
 <div class="box is-section mx-4 publication" id="publication_part">
 
   {% for pub in bio.publications.all %}
-  <div class="my-2 is-justify-content-space-between is-flex-wrap-wrap p-2 is-gray-bg is-flex is-flex-direction-row" >
+  <div class="my-2 is-justify-content-space-between is-flex-wrap-wrap p-2 has-background-grey-lighter is-flex is-flex-direction-row" style="border-radius: 8px">
     <div class="is-flex is-flex-direction-column">
-      <div class="is-font-md is-main">
+      <div class="is-font-md is-main is-arabic">
         {{ pub.title }}
       </div>
       <div class="my-2">
@@ -171,7 +171,7 @@
           <div class="is-flex is-flex-direction-column">
             <p class="is-main my-2">{% trans 'Title' %}</p>
             <input
-              class="input is-normal"
+              class="input has-text-centered is-normal"
               type="text"
               placeholder="write title here ... "
               value="{{ pub.title }}"
@@ -240,7 +240,7 @@
               />
             </div>
             <div class="is-flex is-flex-direction-column">
-              <p class="is-main my-2">{% trans 'URL' %}</p>
+              <p class="is-main my-2">{% trans 'Publication URL' %}</p>
               <input
                 class="input is-normal"
                 type="text"

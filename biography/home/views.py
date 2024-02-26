@@ -12,7 +12,7 @@ from publication.models import Publication
 
 # Create your views here.
 
-@cache_page(0)
+# @cache_page(0)
 def homepage(request):
 
     response = {}
@@ -43,13 +43,15 @@ def homepage(request):
 
     return render(request, 'home.html', response)
 
-@cache_page(0)
+# @cache_page(0)
 def language(request, pagepath):
 
     if pagepath.startswith('/en/'):
-        return HttpResponseRedirect(pagepath.replace('en', 'ar', 1))
+        pagepath = pagepath.replace('en', 'ar', 1)
+        return HttpResponseRedirect(pagepath)
     elif pagepath.startswith('/ar/'):
-        return HttpResponseRedirect(pagepath.replace('ar', 'en', 1))
+        pagepath = pagepath.replace('ar', 'en', 1)
+        return HttpResponseRedirect(pagepath)
     else:
         return HttpResponseRedirect('/en/')
 

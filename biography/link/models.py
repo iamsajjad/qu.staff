@@ -6,6 +6,7 @@ from django.db import models
 class Link(models.Model):
 
     #Link
+    name = models.CharField(max_length=256, default='', blank=False)
     url  = models.URLField(max_length=256, db_index=True, unique=True, blank=False)
     date = models.DateTimeField(auto_now_add=True)
 

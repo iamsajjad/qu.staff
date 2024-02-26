@@ -18,7 +18,7 @@ class Publication(models.Model):
     publisher        = models.CharField(max_length=1024, default='', blank=True)
     description      = models.TextField(default='', blank=True)
 
-    url              = models.URLField(max_length=256, db_index=True, unique=True, blank=False)
+    url              = models.URLField(max_length=256, db_index=True, unique=False, blank=False)
 
     date             = models.DateTimeField(auto_now_add=True)
 

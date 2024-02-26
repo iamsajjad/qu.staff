@@ -5,6 +5,7 @@
   <head>
     {% include './includes/head.html' %}
     <title>{{ bio.full_name }}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
@@ -15,17 +16,48 @@
     {% include './includes/links.html' %}
 
     <div class="box is-section mx-6 my-3">
-      {% if LANGUAGE_CODE == 'en' %}
-      <h1 class="is-main is-font-md p-3">Direct Link to this page</h1>
-      {% else %}
       <h1 class="is-main is-arabic is-font-md p-3">الرابط المباشر لهذه الصفحة</h1>
-      {% endif %}
       <div class="is-flex is-justify-content-start">
         <div class="is-flex is-flex-direction-row m-3 is-full-width">
-          <input id="enurl" class="is-center input my-1" type="text" value="{{ request.build_absolute_uri }}" disabled />
-          <button class="p-3 is-pointer" onclick="copy('{{ request.build_absolute_uri }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
+          <input id="enurl" class="is-center input my-1" type="text" value="https://staff.qu.edu.iq/ar/@/{{ bio.slug }}" disabled />
+          <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/ar/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
         </div>
       </div>
+      <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
+        <div class="is-arabic" id="arqrcode"></div>
+      </div>
+    </div>
+    <div class="box is-section mx-6 my-3">
+      <h1 class="is-main is-font-md p-3">Direct Link to this page</h1>
+      <div class="is-flex is-justify-content-start">
+        <div class="is-flex is-flex-direction-row m-3 is-full-width">
+          <input id="enurl" class="is-center input my-1" type="text" value="https://staff.qu.edu.iq/en/@/{{ bio.slug }}" disabled />
+          <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/en/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
+        <div class="is-arabic" id="enqrcode"></div>
+      </div>
+    </div>
+      <script type="text/javascript">
+        var enqrcode = new QRCode(document.getElementById("enqrcode"), {
+          text: "https://staff.qu.edu.iq/en/@/{{ bio.slug }}",
+          width: 128,
+          height: 128,
+          colorDark : "#4b58a0",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        });
+
+        var arqrcode = new QRCode(document.getElementById("arqrcode"), {
+          text: "https://staff.qu.edu.iq/ar/@/{{ bio.slug }}",
+          width: 128,
+          height: 128,
+          colorDark : "#4b58a0",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        });
+      </script>
     </div>
 
     {% if not bio.full_name %}
