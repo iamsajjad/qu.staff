@@ -13,7 +13,7 @@
   </div>
   {% else %}
   <div class="is-flex is-justify-content-end mb-4">
-    <p class="is-main is-font-md p-3 is-arabic">المنشورات</p>
+    <p class="is-main is-font-md p-3 ">المنشورات</p>
     <i data-target="modal-pub-new"
       class="bi bi-journal-check is-main-icon link-trigger-edit is-clickable"></i>
   </div>
@@ -26,10 +26,10 @@
 
       {% for pub in bio.publications.all %}
       <div data-target="modal-pub-see-{{ pub.id }}" class="modal-trigger-edit is-clickable has-background-grey-lighter p-2 my-2 is-full-width" style="border-radius: 8px">
-        <div class="my-2 is-main is-arabic">
+        <div class="my-2 is-main">
           {{ pub.title }}
         </div>
-        <div style="color: gray">
+        <div class="has-text-left" style="color: gray">
           {{ pub.journal }}, {{ pub.volume }}, ({{ pub.issue }}), {{ pub.pages }}
         </div>
       </div>
@@ -40,7 +40,7 @@
 
           <div class="modal-content modal-card is-full-width">
             <div class="box">
-              <p class="is-font-md my-4 is-main is-centered">
+              <p class="is-font-md my-4 is-main ed">
                 {{ pub.title }}
               </p>
               <div class="is-flex is-flex-direction-column">

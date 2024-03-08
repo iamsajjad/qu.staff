@@ -10,7 +10,7 @@
         {% if LANGUAGE_CODE == 'en' %}
         <p class="my-3 is-white is-font-md">{% if bio.academic_title %}<span class="tag is-primary is-light is-medium"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</p>
         {% else %}
-        <p class="my-3 is-white is-font-md is-arabic">{{ bio.ar_full_name }} {% if bio.ar_academic_title %}<span class="tag is-primary is-light is-medium is-arabic">{{ bio.ar_academic_title }}</span>{% endif %}</p>
+        <p class="my-3 is-white is-font-md ">{{ bio.ar_full_name }} {% if bio.ar_academic_title %}<span class="tag is-primary is-light is-medium ">{{ bio.ar_academic_title }}</span>{% endif %}</p>
         {% endif %}
       {% endif %}
     </div>
@@ -36,7 +36,7 @@
     <div class="my-2">
       <section class="is-flex is-justify-content-center is-mobile">
         <div style="width: auto; position: relative">
-          <p class="my-3 is-font-md is-arabic">المعلومات بللغة العربية</p>
+          <p class="my-3 is-font-md ">المعلومات بللغة العربية</p>
         </div>
       </section>
     </div>
@@ -45,9 +45,9 @@
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">الجنسية</p>
+        <p class="is-main my-1 is-font-sm ">الجنسية</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="ar_nationality" class="is-arabic" required>
+          <select id="dropdown" name="ar_nationality" class="" required>
             {% if bio.ar_nationality %}
             <option selected value="{{ bio.ar_nationality }}">{{ bio.ar_nationality }}</option>
             {% else %}
@@ -57,16 +57,16 @@
         </div>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">الأسم الكامل</p>
-        <input class="input is-center is-arabic" type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
+        <p class="is-main my-1 is-font-sm ">الأسم الكامل</p>
+        <input class="input  " type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">الكلية أو المركز</p>
+        <p class="is-main my-1 is-font-sm ">الكلية أو المركز</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="ar_college" class="is-center is-arabic" required>
+          <select id="dropdown" name="ar_college" class=" " required>
             {% if bio.ar_college %}
             <option selected value="{{ bio.ar_college }}">{{ bio.ar_college }}</option>
             {% else %}
@@ -95,9 +95,9 @@
         </div>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">القب العلمي</p>
+        <p class="is-main my-1 is-font-sm ">القب العلمي</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="ar_academic_title" class="is-arabic" required>
+          <select id="dropdown" name="ar_academic_title" class="" required>
             {% if bio.ar_academic_title %}
             <option selected value="{{ bio.ar_academic_title }}">{{ bio.ar_academic_title }}</option>
             {% else %}
@@ -114,63 +114,63 @@
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">التخصص</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_major" value="{{ bio.ar_major }}" />
+        <p class="is-main my-1 is-font-sm ">التخصص</p>
+        <input class=" input my-1 " type="text" name="ar_major" value="{{ bio.ar_major }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">القسم أو الشعبة أو الوحدة</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_department" value="{{ bio.ar_department }}" />
+        <p class="is-main my-1 is-font-sm ">القسم أو الشعبة أو الوحدة</p>
+        <input class=" input my-1 " type="text" name="ar_department" value="{{ bio.ar_department }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">المهنة</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_occupation" value="{{ bio.ar_occupation }}" />
+        <p class="is-main my-1 is-font-sm ">المهنة</p>
+        <input class=" input my-1 " type="text" name="ar_occupation" value="{{ bio.ar_occupation }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">التخصص الدقيق</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_specialty" value="{{ bio.ar_specialty }}" />
+        <p class="is-main my-1 is-font-sm ">التخصص الدقيق</p>
+        <input class=" input my-1 " type="text" name="ar_specialty" value="{{ bio.ar_specialty }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">اللغات الاخرى</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_other_langs" value="{{ bio.ar_other_langs }}" />
+        <p class="is-main my-1 is-font-sm ">اللغات الاخرى</p>
+        <input class=" input my-1 " type="text" name="ar_other_langs" value="{{ bio.ar_other_langs }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">اللغة الأم</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_mother_lang" value="{{ bio.ar_mother_lang }}" />
+        <p class="is-main my-1 is-font-sm ">اللغة الأم</p>
+        <input class=" input my-1 " type="text" name="ar_mother_lang" value="{{ bio.ar_mother_lang }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">القضاء</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_district" value="{{ bio.ar_district }}" />
+        <p class="is-main my-1 is-font-sm ">القضاء</p>
+        <input class=" input my-1 " type="text" name="ar_district" value="{{ bio.ar_district }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">المحافظة</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_state" value="{{ bio.ar_state }}" />
+        <p class="is-main my-1 is-font-sm ">المحافظة</p>
+        <input class=" input my-1 " type="text" name="ar_state" value="{{ bio.ar_state }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">تاريخ أول مباشرة</p>
-        <input class="is-center input my-1" type="date" name="ar_direct_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_direct_date|date:'Y-m-d' }}" required />
+        <p class="is-main my-1 is-font-sm ">تاريخ أول مباشرة</p>
+        <input class=" input my-1" type="date" name="ar_direct_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_direct_date|date:'Y-m-d' }}" required />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">تاريخ التعيين</p>
-        <input class="is-center input my-1" type="date" name="ar_hiring_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_hiring_date|date:'Y-m-d' }}" required />
+        <p class="is-main my-1 is-font-sm ">تاريخ التعيين</p>
+        <input class=" input my-1" type="date" name="ar_hiring_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_hiring_date|date:'Y-m-d' }}" required />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-full-width is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm is-arabic">المنصب</p>
-        <input class="is-center input my-1 is-arabic" type="text" name="ar_position" value="{{ bio.ar_position }}"/>
+        <p class="is-main my-1 is-font-sm ">المنصب</p>
+        <input class=" input my-1 " type="text" name="ar_position" value="{{ bio.ar_position }}"/>
       </div>
     </div>
 
@@ -178,7 +178,7 @@
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-full-width is-flex is-flex-direction-column mx-2">
-        <button type="submit" class="button is-rounded is-main-bg is-white m-3 is-arabic">حفظ</button>
+        <button type="submit" class="button is-rounded is-main-bg is-white m-3 ">حفظ</button>
       </div>
     </div>
 
@@ -193,11 +193,11 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Full name</p>
-        <input class="is-center input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
+        <input class=" input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Birthday</p>
-        <input class="is-center input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
+        <input class=" input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
       </div>
     </div>
 
@@ -205,7 +205,7 @@
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Gender</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="gender" class="is-center" required>
+          <select id="dropdown" name="gender" class="" required>
             {% if bio.gender == 'Male' %}
             <option selected value="Male">Male</option>
             <option value="Female">Female</option>
@@ -219,7 +219,7 @@
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Nationality</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="nationality" class="is-center" required>
+          <select id="dropdown" name="nationality" class="" required>
               {% if bio.nationality %}
               <option selected value="{{ bio.nationality }}">{{ bio.nationality }}</option>
               {% else %}
@@ -233,12 +233,12 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Position</p>
-        <input class="is-center input my-1" type="text" name="position" value="{{ bio.position }}"/>
+        <input class=" input my-1" type="text" name="position" value="{{ bio.position }}"/>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Degree</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="degree" class="is-center" required>
+          <select id="dropdown" name="degree" class="" required>
             {% if bio.degree == 'PhD' %}
             <option selected value="PhD">PhD</option>
             <option value="MSc">MSc</option>
@@ -269,7 +269,7 @@
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Academic Title</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="academic_title" class="is-center" required>
+          <select id="dropdown" name="academic_title" class="" required>
             {% if bio.academic_title %}
             <option selected value="{{ bio.academic_title }}">{{ bio.academic_title }}</option>
             {% else %}
@@ -285,7 +285,7 @@
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">College / Center</p>
         <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="college" class="is-center is-arabic" required>
+          <select id="dropdown" name="college" class=" " required>
             {% if bio.college %}
             <option selected value="{{ bio.college }}">{{ bio.college }}</option>
             {% else %}
@@ -318,44 +318,44 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Department</p>
-        <input class="is-center input my-1" type="text" name="department" value="{{ bio.department }}" />
+        <input class=" input my-1" type="text" name="department" value="{{ bio.department }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Major</p>
-        <input class="is-center input my-1" type="text" name="major" value="{{ bio.major }}" />
+        <input class=" input my-1" type="text" name="major" value="{{ bio.major }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Specialty</p>
-        <input class="is-center input my-1" type="text" name="specialty" value="{{ bio.specialty }}" />
+        <input class=" input my-1" type="text" name="specialty" value="{{ bio.specialty }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Occupation</p>
-        <input class="is-center input my-1" type="text" name="occupation" value="{{ bio.occupation }}" />
+        <input class=" input my-1" type="text" name="occupation" value="{{ bio.occupation }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Mother Language</p>
-        <input class="is-center input my-1" type="text" name="mother_lang" value="{{ bio.mother_lang }}" />
+        <input class=" input my-1" type="text" name="mother_lang" value="{{ bio.mother_lang }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Other Languages</p>
-        <input class="is-center input my-1" type="text" name="other_langs" value="{{ bio.other_langs }}" />
+        <input class=" input my-1" type="text" name="other_langs" value="{{ bio.other_langs }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Personal Email</p>
-        <input class="is-center input my-1" type="email" name="personal_email" value="{{ bio.personal_email }}"/>
+        <input class=" input my-1" type="email" name="personal_email" value="{{ bio.personal_email }}"/>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Work Email</p>
-        <input class="is-center input my-1" type="email" name="work_email" value="{{ bio.work_email }}" />
+        <input class=" input my-1" type="email" name="work_email" value="{{ bio.work_email }}" />
       </div>
     </div>
 
@@ -363,7 +363,7 @@
       <div class="column is-full-width is-flex is-flex-direction-column is-align-items-center">
         <div class="file has-name">
           <label class="file-label">
-            <input class="is-center file-input" id="image" type="file" onchange="fileSize(1);" name="image" />
+            <input class=" file-input" id="image" type="file" onchange="fileSize(1);" name="image" />
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>

@@ -19,7 +19,7 @@
             <div class="column is-one-third is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm">Academic Title</p>
               <div class="select is-flex is-flex-direction-column">
-                <select id="dropdown" name="academic_title" class="is-center" required>
+                <select id="dropdown" name="academic_title" class="" required>
                   <option value="Professor">Professor</option>
                   <option value="Assistant Professor">Assistant Professor</option>
                   <option value="Lecturer">Lecturer</option>
@@ -30,7 +30,7 @@
             <div class="column is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm">College / Center</p>
               <div class="select is-flex is-flex-direction-column">
-                <select id="dropdown" name="college" class="is-center is-arabic" required>
+                <select id="dropdown" name="college" class=" " required>
                   <option value="Presidency of the University">Presidency of the University</option>
                   <option value="College of Education">College of Education</option>
                   <option value="College of Administration and Economics">College of Administration and Economics</option>
@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm is-arabic">Query</p>
+              <p class="is-main is-font-sm ">Query</p>
               <button class="button" ><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
           </div>
@@ -63,9 +63,9 @@
         <div class="is-flex is-justify-content-center is-align-items-center">
           <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
             <div class="column is-one-third is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm is-arabic">الكلية أو المركز</p>
+              <p class="is-main is-font-sm ">الكلية أو المركز</p>
               <div class="select is-flex is-flex-direction-column">
-                <select id="dropdown" name="ar_college" class="is-center is-arabic" required>
+                <select id="dropdown" name="ar_college" class=" " required>
                   <option value="رئاسة الجامعة">رئاسة الجامعة</option>
                   <option value="كلية التربية">كلية التربية</option>
                   <option value="كلية الأدارة والأقتصاد">كلية الأدارة والأقتصاد</option>
@@ -89,9 +89,9 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm is-arabic">القب العلمي</p>
+              <p class="is-main is-font-sm ">القب العلمي</p>
               <div class="select is-flex is-flex-direction-column">
-                <select id="dropdown" name="ar_academic_title" class="is-arabic" required>
+                <select id="dropdown" name="ar_academic_title" class="" required>
                   <option value="أستاذ">أستاذ</option>
                   <option value="أستاذ مساعد">أستاذ مساعد</option>
                   <option value="مدرس">مدرس</option>
@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm is-arabic">عرض التدريسيين</p>
+              <p class="is-main is-font-sm ">عرض التدريسيين</p>
               <button class="button" ><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
           </div>
@@ -113,13 +113,13 @@
       {% if LANGUAGE_CODE == 'en' %}
       <h1 class="is-main is-font-md p-3">Search for a staff memeber</h1>
       {% else %}
-      <h1 class="is-main is-arabic is-font-md p-3">البحث عن تدريسي</h1>
+      <h1 class="is-main  is-font-md p-3">البحث عن تدريسي</h1>
       {% endif %}
       <div class="is-flex is-justify-content-center is-align-items-center">
         <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
           <div class="column is-four-fifths is-flex is-flex-direction-column">
             <form action="{% url 'search' %}" method="get">
-              <input class="is-center is-normal input is-arabic" type="text" value="" name="query" type="text" autofocus
+              <input class=" is-normal input " type="text" value="" name="query" type="text" autofocus
                 {% if LANGUAGE_CODE == 'en' %}
                 placeholder="Write the keyword here"
                 {% else %}
@@ -147,7 +147,7 @@
       </div>
       {% else %}
       <div class="is-flex is-justify-content-end mb-4">
-        <p class="is-main is-font-md p-3 is-arabic">سيرة ذاتية لبعض التدريسين (عشوائياً)</p>
+        <p class="is-main is-font-md p-3 ">سيرة ذاتية لبعض التدريسين (عشوائياً)</p>
         <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
       </div>
       {% endif %}
@@ -171,9 +171,9 @@
                     <span class="my-3 is-black is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
                   {% else %}
                     {% if bio.ar_specialty %}
-                      <span class="tag is-info is-light is-arabic">{{ bio.ar_specialty }}</span>
+                      <span class="tag is-info is-light ">{{ bio.ar_specialty }}</span>
                     {% endif %}
-                    <span class="my-3 is-black is-arabic is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small is-arabic"> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                    <span class="my-3 is-black  is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small "> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
                   {% endif %}
               </div>
             </div>

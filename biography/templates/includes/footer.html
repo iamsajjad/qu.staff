@@ -2,7 +2,7 @@
 {% load static %}
 <section class="is-main-bg p-4 footer">
   <div class="columns">
-    <div class="column is-white is-four-fifths">
+    <div class="column is-white is-four-fifths has-text-left">
       Technical Support <i class="bi bi-envelope-at-fill is-white"></i> : <a class="is-white" href="mailto:cc@qu.edu.iq">cc@qu.edu.iq</a>
     </div>
     {% if not request.user.is_anonymous %}
@@ -41,16 +41,16 @@
   </div>
   {% else %}
   <div class="copyright is-white has-text-centered">
-    <a href="https://cc.qu.edu.iq" target="_blank"><strong class="is-white is-arabic">جامعة القادسية | مركز الحاسبة الألكترونية</strong></a><br>
+    <a href="https://cc.qu.edu.iq" target="_blank"><strong class="is-white ">جامعة القادسية | مركز الحاسبة الألكترونية</strong></a><br>
     Copyright &copy<script>document.write(new Date().getFullYear())</script>
     <strong>
       <span>
         <a href="mailto:sajjad.aldalwachee@gmail.com">
-          <span class="px-1 is-white is-arabic">سجاد الدلوجي</span>
+          <span class="px-1 is-white ">سجاد الدلوجي</span>
           <i class="bi bi-envelope-at-fill is-white"></i>
         </a>
       </span>
-    </strong><span class="is-white is-arabic">. جميع الحقوق محفوظة</span>
+    </strong><span class="is-white ">. جميع الحقوق محفوظة</span>
   </div>
   {% endif %}
 

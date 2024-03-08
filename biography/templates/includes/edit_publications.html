@@ -22,7 +22,7 @@
 
     <div class="modal-content modal-card is-full-width">
       <div class="box is-section">
-        <p class="is-font-md my-4 is-main is-centered">
+        <p class="is-font-md my-4 is-main ed">
           {% trans 'New Publication' %}
         </p>
         <div class="is-flex is-flex-direction-column">
@@ -143,10 +143,10 @@
   {% for pub in bio.publications.all %}
   <div class="my-2 is-justify-content-space-between is-flex-wrap-wrap p-2 has-background-grey-lighter is-flex is-flex-direction-row" style="border-radius: 8px">
     <div class="is-flex is-flex-direction-column">
-      <div class="is-font-md is-main is-arabic">
+      <div class="is-font-md is-main has-text-left">
         {{ pub.title }}
       </div>
-      <div class="my-2">
+      <div class="my-2 has-text-left">
         {{ pub.journal }}, {{ pub.volume }}, ({{ pub.issue }}), {{ pub.pages }}
       </div>
     </div>
@@ -165,7 +165,7 @@
 
       <div class="modal-content modal-card is-full-width">
         <div class="box is-section">
-          <p class="is-font-md my-4 is-main is-centered">
+          <p class="is-font-md my-4 is-main ed">
             {{ pub.title }}
           </p>
           <div class="is-flex is-flex-direction-column">

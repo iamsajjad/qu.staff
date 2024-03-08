@@ -59,16 +59,16 @@
             </th>
           </tr>
           <tr>
-            <th class="is-centered">
+            <th class="ed">
               <img class="image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
             </th>
-            <th class="is-centered">
+            <th class="ed">
               <img class="image" src="{% static 'assets/icons/quniv.svg' %}" alt="UoQ">
             </th>
           </tr>
           <tr>
             <th colspan="2">
-              <div class="qrcode is-arabic" id="arqrcode"></div>
+              <div class="qrcode " id="arqrcode"></div>
               <script type="text/javascript">
                 var arqrcode = new QRCode(document.getElementById("arqrcode"), {
                   text: "https://staff.qu.edu.iq/ar/@/{{ bio.slug }}",
@@ -96,13 +96,13 @@
           <tr>
             <th>
               {% if bio.degree == 'PhD' %}
-              <span class="is-main is-arabic">دكتوراه</span>
+              <span class="is-main ">دكتوراه</span>
               {% elif bio.degree == 'MSc' %}
-              <span class="is-main is-arabic">ماجستير</span>
+              <span class="is-main ">ماجستير</span>
               {% elif bio.degree == 'Higher Diploma' %}
-              <span class="is-main is-arabic">دبلوم عالي</span>
+              <span class="is-main ">دبلوم عالي</span>
               {% else %}
-              <span class="is-main is-arabic">بكلوريوس</span>
+              <span class="is-main ">بكلوريوس</span>
               {% endif %}
             </th>
             <th>

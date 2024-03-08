@@ -16,27 +16,27 @@
     {% include './includes/links.html' %}
 
     <div class="box is-section mx-6 my-3">
-      <h1 class="is-main is-arabic is-font-md p-3">الرابط المباشر لهذه الصفحة</h1>
+      <h1 class="is-main  is-font-md p-3">الرابط المباشر لهذه الصفحة</h1>
       <div class="is-flex is-justify-content-start">
         <div class="is-flex is-flex-direction-row m-3 is-full-width">
-          <input id="enurl" class="is-center input my-1" type="text" value="https://staff.qu.edu.iq/ar/@/{{ bio.slug }}" disabled />
+          <input id="enurl" class=" input my-1" type="text" value="https://staff.qu.edu.iq/ar/@/{{ bio.slug }}" disabled />
           <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/ar/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
-        <div class="is-arabic" id="arqrcode"></div>
+        <div class="" id="arqrcode"></div>
       </div>
     </div>
     <div class="box is-section mx-6 my-3">
       <h1 class="is-main is-font-md p-3">Direct Link to this page</h1>
       <div class="is-flex is-justify-content-start">
         <div class="is-flex is-flex-direction-row m-3 is-full-width">
-          <input id="enurl" class="is-center input my-1" type="text" value="https://staff.qu.edu.iq/en/@/{{ bio.slug }}" disabled />
+          <input id="enurl" class=" input my-1" type="text" value="https://staff.qu.edu.iq/en/@/{{ bio.slug }}" disabled />
           <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/en/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
-        <div class="is-arabic" id="enqrcode"></div>
+        <div class="" id="enqrcode"></div>
       </div>
     </div>
       <script type="text/javascript">
@@ -66,7 +66,7 @@
       {% if LANGUAGE_CODE == 'en' %}
         <h1 class="has-text-weight-semibold is-main m-6">Please complete profile setup</h1><br>
       {% else %}
-        <h1 class="has-text-weight-semibold is-main m-6 is-arabic">رجاءاً أكمل أعداد الملف الشخصي</h1>
+        <h1 class="has-text-weight-semibold is-main m-6 ">رجاءاً أكمل أعداد الملف الشخصي</h1>
       {% endif %}
     </div>
 

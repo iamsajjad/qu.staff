@@ -7,6 +7,8 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  text-align: center;
+  font-family: 'Readex Pro', serif;
 }
 .hr {
   border: none;
@@ -54,7 +56,7 @@ body {
   text-align: center;
   color: var(--main-color) !important;
 }
-.is-center {
+. {
   text-align: center;
 }
 .is-main-light {
