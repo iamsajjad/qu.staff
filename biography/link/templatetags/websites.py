@@ -12,7 +12,7 @@ def websites(userlinks):
 
     names = [ul.name for ul in userlinks]
     for name in REQUIREDSITES.keys():
-        if name not in names:
+        if name not in names and name != 'Website':
             needed.append(name)
 
     needed.append('Website')
