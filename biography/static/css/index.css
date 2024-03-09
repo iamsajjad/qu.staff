@@ -21,6 +21,10 @@ body {
   min-height:  100vh;
   background: #8b98e0;
 }
+.reg-input {
+  width: 350px !important;
+  margin: 0 10px 0 10px;
+}
 #color {
   border: none;
   outline: 0;

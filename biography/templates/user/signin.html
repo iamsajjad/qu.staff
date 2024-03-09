@@ -8,10 +8,10 @@
   </head>
   <body>
     {% include '../includes/header.html' %}
-    <div class="box is-section m-6">
+    <div class=" m-6">
       <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
         <form id="SigninForm" action="{% url 'signin' %}" method="post">{% csrf_token %}
-          <div class="is-flex is-flex-direction-column is-align-items-center">
+          <div class="box is-half-width is-flex is-flex-direction-column is-align-items-center">
             <div class="is-flex is-flex-direction-column">
               {% if LANGUAGE_CODE == 'en' %}
               <p class="is-main my-2 is-font-md">Email</p>
@@ -19,7 +19,7 @@
               <p class="is-main my-2  is-font-md">البريد الألكتروني</p>
               {% endif %}
               <input
-                class="input is-normal is-full-width"
+                class="reg-input input is-normal is-full-width"
                 type="text"
                 placeholder="example@qu.edu.iq"
                 name="username"
@@ -31,28 +31,28 @@
               {% else %}
               <p class="is-main my-2  is-font-md">الرمز السري</p>
               {% endif %}
-              <input class="input is-normal is-full-width" type="password" name="password" />
+              <input class="reg-input input is-normal is-full-width" type="password" name="password" />
+            </div>
+            <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+              <div>
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="SigninForm">
+                  {% if LANGUAGE_CODE == 'en' %}
+                  <p>Sign in</p>
+                  {% else %}
+                  <p class="">تسجيل الدخول</p>
+                  {% endif %}
+                </button>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
-        <div>
-          <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="SigninForm">
+          <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'register' %}">
             {% if LANGUAGE_CODE == 'en' %}
-            <p>Sign in</p>
+            <p>Register</p>
             {% else %}
-            <p class="">تسجيل الدخول</p>
+            <p class="">أنشاء حساب</p>
             {% endif %}
-          </button>
-        </div>
-        <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'register' %}">
-          {% if LANGUAGE_CODE == 'en' %}
-          <p>Register</p>
-          {% else %}
-          <p class="">أنشاء حساب</p>
-          {% endif %}
-        </a>
+          </a>
+        </form>
       </div>
     </div>
     {% include '../includes/footer.html' %}

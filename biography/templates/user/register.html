@@ -8,89 +8,103 @@
   </head>
   <body>
     {% include '../includes/header.html' %}
-    <div class="box is-section m-6">
-      <div
-        class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap"
-      >
+    <div class="m-6">
+      <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
         <form id="registerForm" action="{% url 'register' %}" method="post">{% csrf_token %}
-          <div class="is-flex is-flex-direction-column is-align-items-center">
+          <div class="box is-half-width is-flex is-flex-direction-column is-align-items-center">
             <div class="is-flex is-flex-direction-column">
-                {% if LANGUAGE_CODE == 'en' %}
-                <p class="is-main my-2 is-font-md">First Name</p>
-                {% else %}
-                <p class="is-main my-2  is-font-md">الأسم الأول</p>
-                {% endif %}
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">First Name</p>
+              {% else %}
+              <p class="is-main my-2  is-font-md">الأسم الأول</p>
+              {% endif %}
               <input
-                class="input is-normal is-full-width"
-                type="text"
-                placeholder="Sajjad"
-                name="first_name"
-              />
+                  class="reg-input input is-normal is-full-width"
+                  type="text"
+                  placeholder="Sajjad"
+                  name="first_name"
+                  />
             </div>
-            <div class="is-flex is-flex-direction-column is-align-items-center">
-              <div class="is-flex is-flex-direction-column">
-                {% if LANGUAGE_CODE == 'en' %}
-                <p class="is-main my-2 is-font-md">Last Name</p>
-                {% else %}
-                <p class="is-main my-2  is-font-md">أسم الأب الكامل</p>
-                {% endif %}
-                <input
-                  class="input is-normal is-full-width"
+            <div class="is-flex is-flex-direction-column">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">Last Name</p>
+              {% else %}
+              <p class="is-main my-2  is-font-md">أسم الأب الكامل</p>
+              {% endif %}
+              <input
+                  class="reg-input input is-normal is-full-width"
                   type="text"
                   placeholder="alDalwachee"
                   name="last_name"
-                />
-              </div>
-              <div class="is-flex is-flex-direction-column my-3">
-                {% if LANGUAGE_CODE == 'en' %}
-                <p class="is-main my-2 is-font-md">Email</p>
-                {% else %}
-                <p class="is-main my-2  is-font-md">البريد الألكتروني</p>
-                {% endif %}
-                <input
-                  class="input is-normal is-full-width"
+                  />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">University Email</p>
+              {% else %}
+              <p class="is-main my-2 is-font-md">البريد الجامعي</p>
+              {% endif %}
+              <input
+                  class="reg-input input is-normal is-full-width"
                   type="text"
-                  placeholder="Jhon@qu.edu.iq"
+                  placeholder="example@qu.edu.iq"
                   name="email"
-                />
+                  />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">Password</p>
+              <div class="is-block has-text-left my-3">
+                <p class="tag is-warning is-dark is-font-sm m-1">password must contain</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">uppercase letters</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">lowercase letters</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">number</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">special characters</p><br>
+                <p class="tag is-warning is-dark is-font-sm m-1">password must not be</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">similar to the email or the user name.</p>
               </div>
-              <div class="is-flex is-flex-direction-column my-3">
-                {% if LANGUAGE_CODE == 'en' %}
-                <p class="is-main my-2 is-font-md">Password</p>
-                {% else %}
-                <p class="is-main my-2  is-font-md">الرمز السري</p>
-                {% endif %}
-                <input class="input is-normal is-full-width" type="password" name="password1" />
+              {% else %}
+              <p class="is-main my-2  is-font-md">الرمز السري</p>
+              <div class="is-block has-text-right my-3">
+                <p class="tag is-warning is-dark is-font-sm m-1">الرمز السري يجب أن يحتوي</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">أحرف كبيره</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">أحرف هغيرة</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">أرقام</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">رموز مختلفة</p><br>
+                <p class="tag is-warning is-dark is-font-sm m-1">الرمز السري يجب أن لايكون</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">مشابه لعنوان البريد أو أسم المستخدم</p>
               </div>
-              <div class="is-flex is-flex-direction-column my-3">
-                {% if LANGUAGE_CODE == 'en' %}
-                <p class="is-main my-2 is-font-md">re-type Password</p>
-                {% else %}
-                <p class="is-main my-2  is-font-md">أعد كتابة الرمز السري</p>
-                {% endif %}
-                <input class="input is-normal is-full-width" type="password" name="password2" />
+              {% endif %}
+              <input class="reg-input input is-normal" type="password" name="password1" />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <p class="is-main my-2 is-font-md">re-type Password</p>
+              {% else %}
+              <p class="is-main my-2  is-font-md">أعد كتابة الرمز السري</p>
+              {% endif %}
+              <input class="reg-input input is-normal is-full-width" type="password" name="password2" />
+            </div>
+            <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+              <div>
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="registerForm">
+                  {% if LANGUAGE_CODE == 'en' %}
+                  <p>Register</p>
+                  {% else %}
+                  <p class="">أنشاء حساب</p>
+                  {% endif %}
+                </button>
               </div>
             </div>
           </div>
+          <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'signin' %}">
+            {% if LANGUAGE_CODE == 'en' %}
+            <p>Sign in</p>
+            {% else %}
+            <p class="">تسجيل الدخول</p>
+            {% endif %}
+          </a>
         </form>
-      </div>
-      <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
-        <div>
-          <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="registerForm">
-          {% if LANGUAGE_CODE == 'en' %}
-          <p>Register</p>
-          {% else %}
-          <p class="">أنشاء حساب</p>
-          {% endif %}
-          </button>
-        </div>
-        <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'signin' %}">
-          {% if LANGUAGE_CODE == 'en' %}
-          <p>Sign in</p>
-          {% else %}
-          <p class="">تسجيل الدخول</p>
-          {% endif %}
-        </a>
       </div>
     </div>
     {% include '../includes/footer.html' %}
