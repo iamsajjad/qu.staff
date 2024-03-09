@@ -202,12 +202,6 @@
           <span><a href="mailto:{{ bio.personal_email }}">{{ bio.personal_email }}</a></span>
         </div>
         {% endif %}
-        {% if bio.update_date %}
-        <div class="my-1 has-text-right">
-          <span class="is-main ">أخر تحديث في : </span>
-          <span class="">{{ bio.update_date|date:"d/m/Y D P" }}</span>
-        </div>
-        {% endif %}
       </div>
 
       <div class="is-flex is-flex-direction-column">
@@ -251,6 +245,12 @@
         <div class="my-1 has-text-right">
           <span class="is-main ">بريد العمل : </span>
           <span><a href="mailto:{{ bio.work_email }}">{{ bio.work_email }}</a></span>
+        </div>
+        {% endif %}
+        {% if bio.update_date %}
+        <div class="my-1 has-text-right">
+          <span class="is-main ">أخر تحديث في : </span>
+          <span class="">{{ bio.update_date|date:"d/m/Y D P" }}</span>
         </div>
         {% endif %}
       </div>
