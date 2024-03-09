@@ -43,7 +43,16 @@ def getstaff(request):
     if request.LANGUAGE_CODE == 'en':
         college = request.POST.get('college')
         academic_title = request.POST.get('academic_title')
-        bios = Bio.objects.filter(Q(college=college) & Q(academic_title=academic_title))
+
+        if college == 'all' and academic_title == 'all':
+            bios = Bio.objects.all()
+        elif college == 'all':
+            bios = Bio.objects.filter(Q(academic_title=academic_title))
+        elif academic_title == 'all':
+            bios = Bio.objects.filter(Q(college=college))
+        else:
+            bios = Bio.objects.filter(Q(college=college) & Q(academic_title=academic_title))
+
         response = {
             'college': college,
             'academic_title': academic_title,
@@ -54,7 +63,15 @@ def getstaff(request):
     else:
         ar_college = request.POST.get('ar_college')
         ar_academic_title = request.POST.get('ar_academic_title')
-        bios = Bio.objects.filter(Q(ar_college=ar_college) & Q(ar_academic_title=ar_academic_title))
+
+        if ar_college == 'all' and ar_academic_title == 'all':
+            bios = Bio.objects.all()
+        elif ar_college == 'all':
+            bios = Bio.objects.filter(Q(ar_academic_title=ar_academic_title))
+        elif ar_academic_title == 'all':
+            bios = Bio.objects.filter(Q(ar_college=ar_college))
+        else:
+            bios = Bio.objects.filter(Q(ar_college=ar_college) & Q(ar_academic_title=ar_academic_title))
 
         response = {
             'ar_college': ar_college,
