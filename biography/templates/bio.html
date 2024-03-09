@@ -6,6 +6,22 @@
     {% include './includes/head.html' %}
     <title>{{ bio.full_name }}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {% if LANGUAGE_CODE == 'en' %}
+    <meta property="og:site_name" content="University of Qadisiyah | Academic Staff Platform" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ bio.academic_title }} {{ bio.full_name }}" />
+    <meta property="og:image" content="https://staff.qu.edu.iq/{{ bio.image.url }}" />
+    <meta property="og:url" content="https://staff.qu.edu.iq/en/@/{{ bio.slug }}" />
+    <meta property="og:description" content="{{ bio.degree }} | {{ bio.birthday|date:"Y" }} | {{ bio.college }} | {{ bio.specialty }}" />
+    {% else %}
+    <meta property="og:site_name" content="جامعــــــــــة القـــــــادسيـــــــــة | منصة كادر الجامعة الأكاديمي" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ bio.ar_academic_title }} {{ bio.ar_full_name }}" />
+    <meta property="og:image" content="https://staff.qu.edu.iq/{{ bio.image.url }}" />
+    <meta property="og:url" content="https://staff.qu.edu.iq/ar/@/{{ bio.slug }}" />
+    <meta property="og:description" content="{{ bio.degree }} | {{ bio.birthday|date:"Y" }} | {{ bio.college }} | {{ bio.specialty }}" />
+    {% endif %}
   </head>
 
   <body>
