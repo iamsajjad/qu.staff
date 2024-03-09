@@ -41,8 +41,6 @@
       </section>
     </div>
 
-    <hr class="navbar-divider my-3" />
-
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">الجنسية</p>
@@ -59,6 +57,32 @@
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">الأسم الكامل</p>
         <input class="input  " type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
+      </div>
+    </div>
+
+    <div class="container columns is-full-width is-flex-wrap-wrap">
+      <div class="column is-half is-flex is-flex-direction-column mx-2">
+        <p class="is-main my-1 is-font-sm">الجنس</p>
+        <div class="select is-flex is-flex-direction-column">
+          <select id="dropdown" name="gender" class="" required>
+            {% if bio.gender %}
+              {% if bio.gender == 'Male' %}
+              <option selected value="Male">ذكر</option>
+              <option value="Female">أنثى</option>
+              {% else %}
+              <option value="Male">ذكر</option>
+              <option selected value="Female">أنثى</option>
+              {% endif %}
+            {% else %}
+              <option value="Male">ذكر</option>
+              <option value="Female">أنثى</option>
+            {% endif %}
+          </select>
+        </div>
+      </div>
+      <div class="column is-flex is-flex-direction-column mx-2">
+        <p class="is-main is-font-sm">تاريخ الميلاد</p>
+        <input class=" input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
       </div>
     </div>
 
@@ -174,13 +198,7 @@
       </div>
     </div>
 
-    <hr class="navbar-divider my-3" />
-
-    <div class="container columns is-full-width is-flex-wrap-wrap">
-      <div class="column is-full-width is-flex is-flex-direction-column mx-2">
-        <button type="submit" class="button is-rounded is-main-bg is-white m-3 ">حفظ</button>
-      </div>
-    </div>
+    <hr class="hr is-full-width navbar-divider is-main-light-bg" />
 
     <div class="my-2">
       <section class="is-flex is-justify-content-center is-mobile">
@@ -194,27 +212,6 @@
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Full name</p>
         <input class=" input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
-      </div>
-      <div class="column is-flex is-flex-direction-column mx-2">
-        <p class="is-main is-font-sm">Birthday</p>
-        <input class=" input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
-      </div>
-    </div>
-
-    <div class="container columns is-full-width is-flex-wrap-wrap">
-      <div class="column is-half is-flex is-flex-direction-column mx-2">
-        <p class="is-main my-1 is-font-sm">Gender</p>
-        <div class="select is-flex is-flex-direction-column">
-          <select id="dropdown" name="gender" class="" required>
-            {% if bio.gender == 'Male' %}
-            <option selected value="Male">Male</option>
-            <option value="Female">Female</option>
-            {% else %}
-            <option value="Male">Male</option>
-            <option selected value="Female">Female</option>
-            {% endif %}
-          </select>
-        </div>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Nationality</p>
@@ -380,9 +377,9 @@
       </div>
     </div>
 
-    <div class="container columns is-full-width is-flex-wrap-wrap">
-      <div class="column is-full-width is-flex is-flex-direction-column mx-2">
-        <button type="submit" class="button is-rounded is-main-bg is-white m-3">Save</button>
+    <div class="container columns is-full is-flex-wrap-wrap">
+      <div class="column is-full is-flex is-flex-direction-column mx-2">
+        <button type="submit" class="button is-rounded is-main-bg is-white m-3">Save | حفظ</button>
       </div>
     </div>
 
