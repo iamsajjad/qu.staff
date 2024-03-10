@@ -12,7 +12,7 @@
     {% include 'includes/header.html' %}
 
     <div class="box is-section mx-6 my-3">
-      <form action="{% url 'getstaff' %}" method="post">{% csrf_token %}
+      <form method="post" id="searchForm">{% csrf_token %}
         {% if LANGUAGE_CODE == 'en' %}
         <div class="is-flex is-justify-content-center is-align-items-center">
           <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
@@ -20,11 +20,14 @@
               <p class="is-main is-font-sm">Academic Title</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="academic_title" required>
+                  {% if academic_title %}
+                  <option value="{{ academic_title }}">{{ academic_title }}</option>
+                  {% endif %}
                   <option value="Professor">Professor</option>
                   <option value="Assistant Professor">Assistant Professor</option>
                   <option value="Lecturer">Lecturer</option>
                   <option value="Assistant Lecturer">Assistant Lecturer</option>
-                  <option value="all">All</option>
+                  <option value="All">All</option>
                 </select>
               </div>
             </div>
@@ -32,6 +35,9 @@
               <p class="is-main is-font-sm">College / Center</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="college" required>
+                  {% if college %}
+                  <option value="{{ college }}">{{ college }}</option>
+                  {% endif %}
                   <option value="Presidency of the University">Presidency of the University</option>
                   <option value="College of Education">College of Education</option>
                   <option value="College of Administration and Economics">College of Administration and Economics</option>
@@ -51,14 +57,20 @@
                   <option value="College of Archaeology">College of Archaeology</option>
                   <option value="College of Biotechnology">College of Biotechnology</option>
                   <option value="College of Fine Arts">College of Fine Arts</option>
-                  <option value="all">All</option>
+                  <option value="All">All</option>
                 </select>
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm ">Query</p>
-              <button class="button" ><i class="bi bi-people" aria-hidden="true"></i></button>
+              <button class="button" onclick="staffUrl('{% url 'getstaff' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
+            {% if request.user.is_superuser %}
+            <div class="column is-flex is-flex-direction-column mx-2">
+              <p class="is-main is-font-sm ">Excel</p>
+              <button class="button" onclick="excelUrl('{% url 'excel' %}')"><i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i></button>
+            </div>
+            {% endif %}
           </div>
         </div>
         {% else %}
@@ -68,6 +80,13 @@
               <p class="is-main is-font-sm ">الكلية أو المركز</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="ar_college" required>
+                  {% if ar_college %}
+                  {% if ar_college == 'All' %}
+                  <option value="All">الكل</option>
+                  {% else %}
+                  <option value="{{ ar_college }}">{{ ar_college }}</option>
+                  {% endif %}
+                  {% endif %}
                   <option value="رئاسة الجامعة">رئاسة الجامعة</option>
                   <option value="كلية التربية">كلية التربية</option>
                   <option value="كلية الأدارة والأقتصاد">كلية الأدارة والأقتصاد</option>
@@ -87,7 +106,7 @@
                   <option value="كلية الأثار">كلية الأثار</option>
                   <option value="كلية التقانات الاحيائية">كلية التقانات الاحيائية</option>
                   <option value="كلية الفنون الجميلة">كلية الفنون الجميلة</option>
-                  <option value="all">الكل</option>
+                  <option value="All">الكل</option>
                 </select>
               </div>
             </div>
@@ -95,18 +114,31 @@
               <p class="is-main is-font-sm ">القب العلمي</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="ar_academic_title" required>
+                  {% if ar_academic_title %}
+                  {% if ar_academic_title == 'All' %}
+                  <option value="All">الكل</option>
+                  {% else %}
+                  <option value="{{ ar_academic_title }}">{{ ar_academic_title }}</option>
+                  {% endif %}
+                  {% endif %}
                   <option value="أستاذ">أستاذ</option>
                   <option value="أستاذ مساعد">أستاذ مساعد</option>
                   <option value="مدرس">مدرس</option>
                   <option value="مدرس مساعد">مدرس مساعد</option>
-                  <option value="all">الكل</option>
+                  <option value="All">الكل</option>
                 </select>
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm ">عرض التدريسيين</p>
-              <button class="button" ><i class="bi bi-people" aria-hidden="true"></i></button>
+              <button class="button" onclick="staffUrl('{% url 'getstaff' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
+            {% if request.user.is_superuser %}
+            <div class="column is-flex is-flex-direction-column mx-2">
+              <p class="is-main is-font-sm ">أكسيل</p>
+              <button class="button" onclick="excelUrl('{% url 'excel' %}')"><i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i></button>
+            </div>
+            {% endif %}
           </div>
         </div>
         {% endif %}
@@ -144,8 +176,10 @@
 
     <div class="box is-section mx-6 my-3">
       <div class="is-flex is-justify-content-end mb-4">
-        {% if staffquery %}
-        <p class="is-main is-font-md p-3 ">{{ staffquery }}</p>
+        {% if college %}
+        <p class="is-main is-font-md p-3 ">{{ college }} | {{ academic_title }}</p>
+        {% elif ar_college %}
+        <p class="is-main is-font-md p-3 ">{% if ar_college == 'All' %}الكل{% else %}{{ ar_college }}{% endif %} | {% if ar_academic_title == 'All' %}الكل{% else %}{{ ar_academic_title }}{% endif %}</p>
         {% else %}
         <p class="is-main is-font-md p-3 ">` {{ query }} `</p>
         {% endif %}

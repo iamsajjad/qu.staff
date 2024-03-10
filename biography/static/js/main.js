@@ -200,3 +200,17 @@ async function copy(textToCopy) {
     }
   }
 }
+
+function staffUrl(url) {
+  var searchform = document.getElementById("searchForm");
+  console.log(url)
+  searchform.action = url;
+  return true;
+}
+
+function excelUrl(url) {
+  var searchform = document.getElementById("searchForm");
+  searchform.action = url;
+  return true;
+}
+
