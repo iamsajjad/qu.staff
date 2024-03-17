@@ -171,9 +171,9 @@
       {% for bio in bios.all %}
         {% if bio.full_name %}
         {% if LANGUAGE_CODE == 'en' %}
-        <a target="_blank" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
+        <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
         {% else %}
-        <a target="_blank" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
+        <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
         {% endif %}
         <div class="memeber-card m-3 has-background-white p-3">
             <div class="is-flex is-links-container is-align-items-center is-full-width">
