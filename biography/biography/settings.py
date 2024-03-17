@@ -124,6 +124,9 @@ CACHE_MIDDLEWARE_ALIAS = "default"
 CACHE_MIDDLEWARE_SECONDS = 0 * 60 * 15 # 15mins and `0 *` for disable
 CACHE_MIDDLEWARE_KEY_PREFIX = ""
 
+# to redirect `http` requests to `https`
+SECURE_SSL_REDIRECT = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
