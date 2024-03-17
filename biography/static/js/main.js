@@ -203,7 +203,6 @@ async function copy(textToCopy) {
 
 function staffUrl(url) {
   var searchform = document.getElementById("searchForm");
-  console.log(url)
   searchform.action = url;
   return true;
 }
@@ -214,3 +213,18 @@ function excelUrl(url) {
   return true;
 }
 
+function isAr(event){
+  if (/[\u0621-\u064A0-9\b\s]/.test(event.key) == true) {
+    return true
+  } else {
+    event.preventDefault();
+  }
+}
+
+function isEn(event){
+  if (/[a-zA-Z0-9\s]/.test(event.key) == true) {
+    return true
+  } else {
+    event.preventDefault();
+  }
+}

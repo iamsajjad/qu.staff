@@ -56,7 +56,7 @@
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">الأسم الكامل</p>
-        <input class="input  " type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
+        <input onkeydown="isAr(event)" class="input  " type="text" name="ar_full_name" value="{{ bio.ar_full_name }}" required />
       </div>
     </div>
 
@@ -82,7 +82,7 @@
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">تاريخ الميلاد</p>
-        <input class=" input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
+        <input onkeydown="isAr(event)" class=" input my-1" type="date" name="birthday" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.birthday|date:'Y-m-d' }}" required />
       </div>
     </div>
 
@@ -139,62 +139,62 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">التخصص</p>
-        <input class=" input my-1 " type="text" name="ar_major" value="{{ bio.ar_major }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_major" value="{{ bio.ar_major }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">القسم أو الشعبة أو الوحدة</p>
-        <input class=" input my-1 " type="text" name="ar_department" value="{{ bio.ar_department }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_department" value="{{ bio.ar_department }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">المهنة</p>
-        <input class=" input my-1 " type="text" name="ar_occupation" value="{{ bio.ar_occupation }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_occupation" value="{{ bio.ar_occupation }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">التخصص الدقيق</p>
-        <input class=" input my-1 " type="text" name="ar_specialty" value="{{ bio.ar_specialty }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_specialty" value="{{ bio.ar_specialty }}" required/>
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">اللغات الاخرى</p>
-        <input class=" input my-1 " type="text" name="ar_other_langs" value="{{ bio.ar_other_langs }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_other_langs" value="{{ bio.ar_other_langs }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">اللغة الأم</p>
-        <input class=" input my-1 " type="text" name="ar_mother_lang" value="{{ bio.ar_mother_lang }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_mother_lang" value="{{ bio.ar_mother_lang }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">القضاء</p>
-        <input class=" input my-1 " type="text" name="ar_district" value="{{ bio.ar_district }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_district" value="{{ bio.ar_district }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">المحافظة</p>
-        <input class=" input my-1 " type="text" name="ar_state" value="{{ bio.ar_state }}" />
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_state" value="{{ bio.ar_state }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">تاريخ أول مباشرة</p>
-        <input class=" input my-1" type="date" name="ar_direct_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_direct_date|date:'Y-m-d' }}" required />
+        <input onkeydown="isAr(event)" class=" input my-1" type="date" name="ar_direct_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_direct_date|date:'Y-m-d' }}" required />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">تاريخ التعيين</p>
-        <input class=" input my-1" type="date" name="ar_hiring_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_hiring_date|date:'Y-m-d' }}" required />
+        <input onkeydown="isAr(event)" class=" input my-1" type="date" name="ar_hiring_date" pattern="\d{4}-\d{2}-\d{2}" value="{{ bio.ar_hiring_date|date:'Y-m-d' }}" required />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-full-width is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm ">المنصب</p>
-        <input class=" input my-1 " type="text" name="ar_position" value="{{ bio.ar_position }}"/>
+        <input onkeydown="isAr(event)" class=" input my-1 " type="text" name="ar_position" value="{{ bio.ar_position }}"/>
       </div>
     </div>
 
@@ -211,7 +211,7 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Full name</p>
-        <input class=" input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="full_name" value="{{ bio.full_name }}" required />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Nationality</p>
@@ -230,7 +230,7 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Position</p>
-        <input class=" input my-1" type="text" name="position" value="{{ bio.position }}"/>
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="position" value="{{ bio.position }}"/>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main my-1 is-font-sm">Degree</p>
@@ -315,44 +315,44 @@
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Department</p>
-        <input class=" input my-1" type="text" name="department" value="{{ bio.department }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="department" value="{{ bio.department }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Major</p>
-        <input class=" input my-1" type="text" name="major" value="{{ bio.major }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="major" value="{{ bio.major }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Specialty</p>
-        <input class=" input my-1" type="text" name="specialty" value="{{ bio.specialty }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="specialty" value="{{ bio.specialty }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Occupation</p>
-        <input class=" input my-1" type="text" name="occupation" value="{{ bio.occupation }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="occupation" value="{{ bio.occupation }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Mother Language</p>
-        <input class=" input my-1" type="text" name="mother_lang" value="{{ bio.mother_lang }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="mother_lang" value="{{ bio.mother_lang }}" />
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Other Languages</p>
-        <input class=" input my-1" type="text" name="other_langs" value="{{ bio.other_langs }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="text" name="other_langs" value="{{ bio.other_langs }}" />
       </div>
     </div>
 
     <div class="container columns is-full-width is-flex-wrap-wrap">
       <div class="column is-half is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Personal Email</p>
-        <input class=" input my-1" type="email" name="personal_email" value="{{ bio.personal_email }}"/>
+        <input onkeydown="isEn(event)" class=" input my-1" type="email" name="personal_email" value="{{ bio.personal_email }}"/>
       </div>
       <div class="column is-flex is-flex-direction-column mx-2">
         <p class="is-main is-font-sm">Work Email</p>
-        <input class=" input my-1" type="email" name="work_email" value="{{ bio.work_email }}" />
+        <input onkeydown="isEn(event)" class=" input my-1" type="email" name="work_email" value="{{ bio.work_email }}" />
       </div>
     </div>
 
@@ -360,7 +360,7 @@
       <div class="column is-full-width is-flex is-flex-direction-column is-align-items-center">
         <div class="file has-name">
           <label class="file-label">
-            <input class=" file-input" id="image" type="file" onchange="fileSize(1);" name="image" />
+            <input class=" file-input" id="image" type="file" onchange="fileSize(1);" name="image" required/>
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
