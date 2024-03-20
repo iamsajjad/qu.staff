@@ -42,11 +42,11 @@ def search(request):
 
     return render(request, 'search.html', response)
 
-def getstaff(request):
+def group(request):
 
     if request.LANGUAGE_CODE == 'en':
-        college = request.POST.get('college')
-        academic_title = request.POST.get('academic_title')
+        college = request.GET.get('college')
+        academic_title = request.GET.get('academic_title')
 
         if college == 'All' and academic_title == 'All':
             bios = Bio.objects.all()
@@ -64,8 +64,8 @@ def getstaff(request):
         }
 
     else:
-        ar_college = request.POST.get('ar_college')
-        ar_academic_title = request.POST.get('ar_academic_title')
+        ar_college = request.GET.get('ar_college')
+        ar_academic_title = request.GET.get('ar_academic_title')
 
         if ar_college == 'All' and ar_academic_title == 'All':
             bios = Bio.objects.all()

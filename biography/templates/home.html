@@ -12,7 +12,7 @@
     {% include 'includes/header.html' %}
 
     <div class="box is-section mx-6 my-3">
-      <form method="post" id="searchForm">{% csrf_token %}
+      <form method="get" id="searchForm">
         {% if LANGUAGE_CODE == 'en' %}
         <div class="is-flex is-justify-content-center is-align-items-center">
           <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
@@ -57,7 +57,7 @@
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm ">Query</p>
-              <button class="button" onclick="staffUrl('{% url 'getstaff' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
+              <button class="button" onclick="staffUrl('{% url 'group' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
             {% if request.user.is_superuser %}
             <div class="column is-flex is-flex-direction-column mx-2">
@@ -111,7 +111,7 @@
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
               <p class="is-main is-font-sm ">عرض التدريسيين</p>
-              <button class="button" onclick="staffUrl('{% url 'getstaff' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
+              <button class="button" onclick="staffUrl('{% url 'group' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
             {% if request.user.is_superuser %}
             <div class="column is-flex is-flex-direction-column mx-2">
