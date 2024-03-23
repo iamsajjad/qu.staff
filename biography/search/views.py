@@ -100,11 +100,11 @@ def excel(request):
         return redirect('homepage')
 
     if request.LANGUAGE_CODE == 'en':
-        college = request.POST.get('college')
-        academic_title = request.POST.get('academic_title')
+        college = request.GET.get('college')
+        academic_title = request.GET.get('academic_title')
     else:
-        college = request.POST.get('ar_college')
-        academic_title = request.POST.get('ar_academic_title')
+        college = request.GET.get('ar_college')
+        academic_title = request.GET.get('ar_academic_title')
 
     if college == 'All' and academic_title == 'All':
         bios = Bio.objects.all()
