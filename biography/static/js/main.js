@@ -213,18 +213,24 @@ function excelUrl(url) {
   return true;
 }
 
-function isAr(event){
-  if (/[\u0621-\u064A0-9\b\s]/.test(event.key) == true) {
-    return true
-  } else {
+function isEn(event){
+  if (event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 13) {
+    return true;
+  } else if (/[\u0621-\u064A]/.test(event.key) == true) {
     event.preventDefault();
+    return false;
+  } else {
+    return true;
   }
 }
 
-function isEn(event){
-  if (/[a-zA-Z0-9\s]/.test(event.key) == true) {
-    return true
-  } else {
+function isAr(event){
+  if (event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 13) {
+    return true;
+  } else if (/[a-zA-Z]/.test(event.key) == true) {
     event.preventDefault();
+    return false;
+  } else {
+    return true;
   }
 }
