@@ -17,7 +17,7 @@ class Bio(models.Model):
     full_name      = models.CharField(max_length=256, default='', blank=False)
     surname        = models.CharField(max_length=256, default='', blank=True)
     image          = models.ImageField(upload_to='user/images/', default='user/default/user.svg', blank=True)
-    birthday       = models.DateTimeField(auto_now=False, default=datetime.strptime('1999-01-17', '%Y-%m-%d').date(), blank=True)
+    birthday       = models.DateTimeField(auto_now=False, default=timezone.make_aware(datetime.strptime('1999-01-17', '%Y-%m-%d')), blank=True)
     nationality    = models.CharField(max_length=128, default='', blank=True)
     gender         = models.CharField(max_length=32, default='', blank=True)
     degree         = models.CharField(max_length=32, default='', blank=True)
