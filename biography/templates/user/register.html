@@ -7,16 +7,20 @@
     <title>UoQ | CV project</title>
   </head>
   <body>
+
     {% include '../includes/header.html' %}
-    <div class="m-6">
+    {% include '../includes/sidebar.html' %}
+    {% include '../includes/logo.html' %}
+
+    <div class="mt-6">
       <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
         <form id="registerForm" action="{% url 'register' %}" method="post">{% csrf_token %}
           <div class="box is-half-width is-flex is-flex-direction-column is-align-items-center">
             <div class="is-flex is-flex-direction-column">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-md">First Name</p>
+              <p class="is-main my-2 is-font-sm">First Name</p>
               {% else %}
-              <p class="is-main my-2  is-font-md">الأسم الأول</p>
+              <p class="is-main my-2  is-font-sm">الأسم الأول</p>
               {% endif %}
               <input
                   class="reg-input input is-normal is-full-width"
@@ -27,9 +31,9 @@
             </div>
             <div class="is-flex is-flex-direction-column">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-md">Last Name</p>
+              <p class="is-main my-2 is-font-sm">Last Name</p>
               {% else %}
-              <p class="is-main my-2  is-font-md">أسم الأب الكامل</p>
+              <p class="is-main my-2  is-font-sm">أسم الأب الكامل</p>
               {% endif %}
               <input
                   class="reg-input input is-normal is-full-width"
@@ -40,9 +44,9 @@
             </div>
             <div class="is-flex is-flex-direction-column my-3">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-md">University Email</p>
+              <p class="is-main my-2 is-font-sm">University Email</p>
               {% else %}
-              <p class="is-main my-2 is-font-md">البريد الجامعي</p>
+              <p class="is-main my-2 is-font-sm">البريد الجامعي</p>
               {% endif %}
               <input
                   class="reg-input input is-normal is-full-width"
@@ -53,7 +57,7 @@
             </div>
             <div class="is-flex is-flex-direction-column my-3">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-md">Password</p>
+              <p class="is-main my-2 is-font-sm">Password</p>
               <div class="is-block has-text-left my-3">
                 <p class="tag is-warning is-dark is-font-sm m-1">password must contain</p><br>
                 <p class="tag is-warning is-light is-font-sm m-1">uppercase letters</p><br>
@@ -64,10 +68,10 @@
                 <p class="tag is-warning is-light is-font-sm m-1">similar to the email or the user name.</p>
               </div>
               {% else %}
-              <p class="is-main my-2  is-font-md">الرمز السري</p>
+              <p class="is-main my-2  is-font-sm">الرمز السري</p>
               <div class="is-block has-text-right my-3">
                 <p class="tag is-warning is-dark is-font-sm m-1">الرمز السري يجب أن يحتوي</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">أحرف كبيره</p><br>
+                <p class="tag is-warning is-light is-font-sm m-1">أحرف كبيرة</p><br>
                 <p class="tag is-warning is-light is-font-sm m-1">أحرف صغيرة</p><br>
                 <p class="tag is-warning is-light is-font-sm m-1">أرقام</p><br>
                 <p class="tag is-warning is-light is-font-sm m-1">رموز مختلفة</p><br>
@@ -79,9 +83,9 @@
             </div>
             <div class="is-flex is-flex-direction-column my-3">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-md">re-type Password</p>
+              <p class="is-main my-2 is-font-sm">re-type Password</p>
               {% else %}
-              <p class="is-main my-2  is-font-md">أعد كتابة الرمز السري</p>
+              <p class="is-main my-2  is-font-sm">أعد كتابة الرمز السري</p>
               {% endif %}
               <input class="reg-input input is-normal is-full-width" type="password" name="password2" />
             </div>
@@ -89,9 +93,9 @@
               <div>
                 <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="registerForm">
                   {% if LANGUAGE_CODE == 'en' %}
-                  <p>Register</p>
+                  Register
                   {% else %}
-                  <p class="">أنشاء حساب</p>
+                  أنشاء حساب
                   {% endif %}
                 </button>
               </div>
@@ -99,9 +103,9 @@
           </div>
           <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'signin' %}">
             {% if LANGUAGE_CODE == 'en' %}
-            <p>Sign in</p>
+            Sign in
             {% else %}
-            <p class="">تسجيل الدخول</p>
+            تسجيل الدخول
             {% endif %}
           </a>
         </form>
@@ -109,5 +113,6 @@
     </div>
     {% include '../includes/footer.html' %}
   </body>
+  <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 </html>

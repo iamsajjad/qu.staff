@@ -10,6 +10,8 @@
   <body>
 
     {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    {% include 'includes/logo.html' %}
 
     <div class="box is-section mx-6 my-3">
       <form method="get" id="searchForm">
@@ -187,33 +189,35 @@
       </div>
 
       {% for bio in bios.all %}
-      {% if bio.full_name %}
-      {% if LANGUAGE_CODE == 'en' %}
-      <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
-      {% else %}
-      <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
-      {% endif %}
-        <div class="memeber-card m-3 has-background-white p-3">
-          <div class="is-flex is-links-container is-align-items-center is-full-width">
+        {% if bio.full_name %}
+        {% if LANGUAGE_CODE == 'en' %}
+        <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
+        {% else %}
+        <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
+        {% endif %}
+        <div class="memeber-card m-1 has-background-white p-1 is-full-width">
+          <div class="d-flex flex-row justify-content-start is-full-width">
             <img class="is-min-image" src="{{ bio.image.url }}" alt="BIO image">
-            <div class="is-right-border"></div>
-            <div  class="is-main " style=" overflow-x: auto;">
+            <div class="is-flex is-links-container is-align-items-center">
+              <div class="is-right-border"></div>
+              <div  class="is-main " style=" overflow-x: auto;">
                 {% if LANGUAGE_CODE == 'en' %}
-                  {% if bio.specialty %}
-                    <span class="tag is-info is-light">{{ bio.specialty }}</span>
-                  {% endif %}
-                  <span class="my-3 is-black is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
-                {% else %}
-                  {% if bio.ar_specialty %}
-                    <span class="tag is-info is-light ">{{ bio.ar_specialty }}</span>
-                  {% endif %}
-                  <span class="my-3 is-black  is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small "> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                {% if bio.specialty %}
+                <span class="tag is-info is-light">{{ bio.specialty }}</span>
                 {% endif %}
+                <span class="my-3 is-black is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
+                {% else %}
+                {% if bio.ar_specialty %}
+                <span class="tag is-info is-light ">{{ bio.ar_specialty }}</span>
+                {% endif %}
+                <span class="my-3 is-black  is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small "> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
-      </a>
-      {% endif %}
+        </a>
+        {% endif %}
       {% endfor %}
 
     </div>
@@ -233,5 +237,6 @@
     {% include 'includes/footer.html' %}
 
   </body>
+  <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 </html>

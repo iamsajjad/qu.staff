@@ -1,66 +1,18 @@
 {% load i18n %}
 {% load static %}
 {% load switchlang %}
-<header>
-  <section class="hero py-3 is-main-bg">
-    <div class="is-flex hero-body is-justify-content-space-between">
-      <div>
-        {% if LANGUAGE_CODE == 'en' %}
-        <p class="title is-white mb-20">University of<br>Qadisiyah</p>
-        <p class="has-text-weight-semibold is-white  mb-20">The University Academic Staff Platform</p>
-        {% else %}
-        <p class="title is-white  mb-20">جامعــــــــــة<br>القـــــــادسيـــــــــة</p>
-        <p class="has-text-weight-semibold  is-white mb-20">منصة كادر الجامعة الأكاديمي</p>
-        {% endif %}
-      </div>
-      <div>
-        <img src="{% static './assets/icons/quniv.svg' %}" width="200" height="200" />
-      </div>
-    </div>
-    <div class="is-flex mx-3 head-btn" >
 
-      <div class="lang my-2">
-        <a href="{{ request.path|switchlang }}">
-        <i class="bi bi-translate is-white title"></i>
-        </a>
-      </div>
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-      {% if request.user == bio.owner or request.user.is_superuser %}
-      {% if biopage %}
-      <div class="lang my-2">
-        <a href="{% url 'edit' slug=settings.slug %}">
-          <i class="bi bi-pencil-square is-white title"></i>
-        </a>
-      </div>
-      {% else %}
-      <div class="lang my-2">
-        <a href="{% url 'biopage' slug=settings.slug %}">
-          <i class="bi bi-eye is-white title"></i>
-        </a>
-      </div>
-      {% endif %}
-      {% endif %}
+  <div class="col-12 d-flex align-items-center justify-content-between">
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'homepage' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/icons/quniv.svg' %}" alt="" >
+        <span class="d-lg-block">University of<br>Al-Qadisiyah | Staff</span>
+      </a>
+    </div><!-- End Logo -->
+  </div><!-- End Logo -->
 
-      <div class="login my-2">
-        <a href="{% url 'homepage' %}">
-          <i class="bi bi-search is-white title"></i>
-        </a>
-      </div>
-
-      {% if user.is_anonymous %}
-      <div class="login my-2">
-        <a href="{% url 'signin' %}">
-          <i class="bi bi-box-arrow-in-right is-white title"></i>
-        </a>
-      </div>
-      {% else %}
-      <div class="login my-2">
-        <a href="{% url 'signout' %}">
-          <i class="bi bi-box-arrow-right is-white title"></i>
-        </a>
-      </div>
-      {% endif %}
-
-    </div>
-  </section>
-</header>
+</header><!-- End Header -->

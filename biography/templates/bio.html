@@ -27,6 +27,7 @@
   <body>
 
     {% include './includes/header.html' %}
+    {% include './includes/sidebar.html' %}
     {% include './includes/personal.html' %}
     {% include './includes/publications.html' %}
     {% include './includes/links.html' %}
@@ -36,7 +37,7 @@
       <div class="is-flex is-justify-content-start">
         <div class="is-flex is-flex-direction-row m-3 is-full-width">
           <input id="enurl" class=" input my-1" type="text" value="https://staff.qu.edu.iq/ar/@/{{ bio.slug }}" disabled />
-          <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/ar/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary" onclick="copy('https://staff.qu.edu.iq/ar/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
@@ -48,7 +49,7 @@
       <div class="is-flex is-justify-content-start">
         <div class="is-flex is-flex-direction-row m-3 is-full-width">
           <input id="enurl" class=" input my-1" type="text" value="https://staff.qu.edu.iq/en/@/{{ bio.slug }}" disabled />
-          <button class="p-3 is-pointer" onclick="copy('https://staff.qu.edu.iq/en/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary" onclick="copy('https://staff.qu.edu.iq/en/@/{{ bio.slug }}')"><i class="bi bi-clipboard" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="is-flex is-justify-content-space-around is-flex-direction-row is-full-width">
@@ -90,5 +91,6 @@
 
     {% include './includes/footer.html' %}
   </body>
+  <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 </html>
