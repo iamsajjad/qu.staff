@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_page
 from django.shortcuts import redirect, render
+from django.core.mail import send_mail
 
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -12,8 +13,41 @@ from settings.forms import SettingsForm
 from user.forms import UserRegisterForm
 
 from user.slug import slug
+from user.gen import PASSWORD
 
 # Create your views here.
+
+@cache_page(0)
+def reset(request):
+
+    # reset password and send the new password in email
+    if request.method == 'POST':
+
+        email = request.POST['email']
+        user = User.objects.filter(email=email)
+
+        if len(user) == 1:
+            user = user[0]
+        else:
+            return redirect('signin')
+
+        new_password = PASSWORD(12)
+        user.set_password(new_password)
+        user.save()
+
+        # send the new password
+        subject = 'Qadisiyah University | Academic Staff | Password reset'
+        message = f'The new Password is : {new_password}'
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [user.email]
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
+        return redirect('signin')
+    else:
+
+        return render(request, 'user/reset.html')
+
+    return redirect('/')
 
 @cache_page(0)
 def register(request):
@@ -59,7 +93,7 @@ def signin(request):
 
     if request.method == 'POST':
 
-        username = request.POST.get('username', '')
+        username = request.POST.get('email', '')
         password = request.POST.get('password', '')
 
         user = authenticate(request, username=username, password=password)

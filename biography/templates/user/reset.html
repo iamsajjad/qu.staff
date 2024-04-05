@@ -14,7 +14,7 @@
 
     <div class="mt-6">
       <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
-        <form id="SigninForm" action="{% url 'signin' %}" method="post">{% csrf_token %}
+        <form id="ResetForm" action="{% url 'reset' %}" method="post">{% csrf_token %}
           <div class="box is-half-width is-flex is-flex-direction-column is-align-items-center">
             <div class="is-flex is-flex-direction-column">
               {% if LANGUAGE_CODE == 'en' %}
@@ -24,43 +24,28 @@
               {% endif %}
               <input
                 class="reg-input input is-normal is-full-width"
-                type="text"
+                type="email"
                 placeholder="example@qu.edu.iq"
                 name="email"
               />
             </div>
-            <div class="is-flex is-flex-direction-column my-3">
-              {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-sm">Password</p>
-              {% else %}
-              <p class="is-main my-2  is-font-sm">الرمز السري</p>
-              {% endif %}
-              <input class="reg-input input is-normal is-full-width" type="password" name="password" />
-            </div>
             <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
               <div>
-                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="SigninForm">
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="ResetForm">
                   {% if LANGUAGE_CODE == 'en' %}
-                  Sign in
+                  Send me a new password
                   {% else %}
-                  تسجيل الدخول
+                  أرسل لي كلمة المرور الجديدة عبر البريد
                   {% endif %}
                 </button>
               </div>
             </div>
           </div>
-          <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'register' %}">
+          <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'signin' %}">
             {% if LANGUAGE_CODE == 'en' %}
-            Register
+            Sign in
             {% else %}
-            أنشاء حساب
-            {% endif %}
-          </a>
-          <a class="button my-4 is-main-bg is-rounded is-white" href="{% url 'reset' %}">
-            {% if LANGUAGE_CODE == 'en' %}
-            Forget Password !
-            {% else %}
-            ! نسيت كلمة السر
+            تسجيل الدخول
             {% endif %}
           </a>
         </form>

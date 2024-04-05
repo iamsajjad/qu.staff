@@ -19,7 +19,7 @@
         <div class="is-flex is-justify-content-center is-align-items-center">
           <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
             <div class="column is-one-third is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm">Academic Title</p>
+              <p class="is-main">Academic Title</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="academic_title" required>
                   <option value="Professor">Professor</option>
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm">College / Center</p>
+              <p class="is-main">College / Center</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="college" required>
                   <option value="Presidency of the University">Presidency of the University</option>
@@ -58,12 +58,12 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">Query</p>
+              <p class="is-main">Query</p>
               <button class="button" onclick="staffUrl('{% url 'group' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
             {% if request.user.is_superuser %}
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">Excel</p>
+              <p class="is-main">Excel</p>
               <button class="button" onclick="excelUrl('{% url 'excel' %}')"><i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i></button>
             </div>
             {% endif %}
@@ -73,7 +73,7 @@
         <div class="is-flex is-justify-content-center is-align-items-center">
           <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
             <div class="column is-one-third is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">الكلية أو المركز</p>
+              <p class="is-main">الكلية أو المركز</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="ar_college" required>
                   <option value="رئاسة الجامعة">رئاسة الجامعة</option>
@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">القب العلمي</p>
+              <p class="is-main">القب العلمي</p>
               <div class="select is-flex is-flex-direction-column">
                 <select id="dropdown" name="ar_academic_title" required>
                   <option value="أستاذ">أستاذ</option>
@@ -112,12 +112,12 @@
               </div>
             </div>
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">عرض التدريسيين</p>
+              <p class="is-main">عرض التدريسيين</p>
               <button class="button" onclick="staffUrl('{% url 'group' %}')"><i class="bi bi-people" aria-hidden="true"></i></button>
             </div>
             {% if request.user.is_superuser %}
             <div class="column is-flex is-flex-direction-column mx-2">
-              <p class="is-main is-font-sm ">أكسيل</p>
+              <p class="is-main">أكسيل</p>
               <button class="button" onclick="excelUrl('{% url 'excel' %}')"><i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i></button>
             </div>
             {% endif %}
@@ -187,12 +187,12 @@
                 {% if bio.specialty %}
                 <span class="tag is-info is-light">{{ bio.specialty }}</span>
                 {% endif %}
-                <span class="my-3 is-black is-font-sm">{% if bio.academic_title %}<span class="tag is-primary is-light is-small"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
+                <span class="my-3 is-black">{% if bio.academic_title %}<span class="tag is-primary is-light"> {{ bio.academic_title }}</span>{% endif %} {{ bio.full_name }}</span>
                 {% else %}
                 {% if bio.ar_specialty %}
                 <span class="tag is-info is-light ">{{ bio.ar_specialty }}</span>
                 {% endif %}
-                <span class="my-3 is-black  is-font-sm">{% if bio.ar_academic_title %}<span class="tag is-primary is-light is-small "> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
+                <span class="my-3 is-black">{% if bio.ar_academic_title %}<span class="tag is-primary is-light"> {{ bio.ar_academic_title }}</span>{% endif %} {{ bio.ar_full_name }}</span>
                 {% endif %}
               </div>
             </div>

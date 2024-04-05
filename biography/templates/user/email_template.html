@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load static %}
+{% load inlinecss %}
+{% inlinecss "css/bulma.min.css" %}
+{% inlinecss "libs/bootstrap/css/bootstrap.min.css" %}
+{% inlinecss "libs/bootstrap-icons/font/bootstrap-icons.css" %}
+{% inlinecss "css/index.css" %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
+
+    <title>UoQ | CV project</title>
+  </head>
+  <body>
+
+    <div class="mt-6">
+      <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
+        <div class="box is-half-width is-flex is-flex-direction-column is-align-items-center">
+          <div class="is-flex is-flex-direction-column">
+            <p class="is-main my-2 is-font-sm">Your New Password</p>
+            <input
+                class="reg-input input is-normal is-full-width"
+                type="text"
+                value="{{ new_password }}"
+                disable
+                />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include '../includes/footer.html' %}
+  </body>
+</html>
+{% endinlinecss %}

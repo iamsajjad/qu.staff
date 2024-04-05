@@ -18,7 +18,7 @@ DEBUG = True
 ALLOWED_HOSTS = ('*', 'localhost', '127.0.0.1', )
 
 # allowed users from specific ORGs
-IS_ORG_EMAIL = lambda ue : any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve))
+IS_ORG_EMAIL = lambda ue : any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve) and not any(i.isdigit() for i in ue))
 
 # Application definition
 
@@ -149,6 +149,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mustafajawad444@gmail.com'
+EMAIL_HOST_PASSWORD = '8Sajjad8'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
