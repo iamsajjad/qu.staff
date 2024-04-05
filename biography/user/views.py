@@ -37,7 +37,7 @@ def reset(request):
 
         # send the new password
         subject = 'Qadisiyah University | Academic Staff | Password reset'
-        message = f'The new Password is : {new_password}'
+        message = f'https://staff.qu.edu.iq\n\nYour Email : {user.email}\nThe new Password is : {new_password}'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [user.email]
         send_mail(subject, message, from_email, recipient_list, fail_silently=False)

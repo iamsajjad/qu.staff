@@ -8,6 +8,8 @@ from publication.models import Publication
 
 from bio.forms import BioForm
 
+from home.status import status
+
 # Create your views here.
 
 # @login_required
@@ -42,17 +44,11 @@ def biopage(request, slug):
     else:
         bio = bio[0]
 
-    # footer status informations
-    status = {'bios':Bio.objects.count(),
-              'links' : Link.objects.count(),
-              'publications' : Publication.objects.count(),
-    }
-
     response = {
         'biopage': True,
         'settings': settings,
         'bio': bio,
-        'status': status,
+        'status': status(),
     }
 
     return render(request, 'bio.html', response)
@@ -85,19 +81,13 @@ def edit(request, slug):
     else:
         if authorized:
 
-            # footer status informations
-            status = {'bios':Bio.objects.count(),
-                      'links' : Link.objects.count(),
-                      'publications' : Publication.objects.count(),
-            }
-
             response = {
                 'editpage': True,
                 'settings': settings,
                 'bio': bio,
-                'status': status,
+                'status': status(),
             }
-            return render(request, 'edit_bio.html', response)
+            return render(request, 'edit.html', response)
     return redirect(f'{slug}')
 
 @login_required

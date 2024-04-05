@@ -4,48 +4,54 @@
 
 {% if bio.links.all %}
 
-<div class="box is-section mx-6 my-3">
+<div class="box is-section mx-6 my-4">
 
   {% if LANGUAGE_CODE == 'en' %}
   <div class="is-flex is-justify-content-start">
     <i data-target="modal-link-new"
       class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
     <p class="is-main is-font-md p-3">Links</p>
-    {% if request.user == bio.owner or request.user.is_superuser %}
-    {% if bio.links.all|isdone %}
-    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm p-3 m-1">Print endorsement<i class="bi bi-printer mx-2"></i></a>
-    {% endif %}
-    {% endif %}
   </div>
   {% else %}
-  <div class="is-flex is-justify-content-end mb-4">
-    {% if request.user == bio.owner or request.user.is_superuser %}
-    {% if bio.links.all|isdone %}
-    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm  p-3 m-1"><i class="bi bi-printer mx-2"></i>طباعة تأييد</a>
-    {% endif %}
-    {% endif %}
+  <div class="is-flex is-justify-content-end">
     <p class="is-main is-font-md p-3 ">الروابط</p>
     <i data-target="modal-link-new"
       class="bi bi-link-45deg is-main-icon link-trigger-edit is-clickable"></i>
   </div>
   {% endif %}
-
-    {% for link in bio.links.all|sortsites %}
-    <a target="_blank" href="{{ link.url }}">
-      <div class="m-3 p-3 is-main-light-bg is-clipped" style="border-radius: 8px">
-        <div class="is-flex is-links-container is-align-items-center is-justify-content-start is-full-width">
-          <span class="is-size-5 has-text-black has-text-left">{{ link.name }}</span>
-          <i class="bi bi-link has-text-light is-size-2 mx-2"></i>
-          <div class="is-right-border"></div>
-          <div  class="is-main is-underlined" style=" overflow-x: auto;">
-            <span class="has-text-dark">{{ link.url }}</span>
-          </div>
+  {% for link in bio.links.all|sortsites %}
+  <a target="_blank" href="{{ link.url }}">
+    <div class="col-auto">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text mr-2">{{ link.name }}</div>
         </div>
+        <span type="text" class="form-control has-text-left overflow-hidden" id="inlineFormInputGroup">{{ link.url }}</span>
       </div>
-    </a>
-    {% endfor %}
-
+    </div>
+  </a>
+  {% endfor %}
 
 </div>
 
+{% endif %}
+
+{% if bio.links.all|isdone %}
+<div class="box is-section mx-6 my-4">
+
+  {% if LANGUAGE_CODE == 'en' %}
+  <div class="is-flex is-justify-content-center">
+    {% if request.user == bio.owner or request.user.is_superuser %}
+    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm p-3 m-1">Print endorsement<i class="bi bi-printer mx-2"></i></a>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="is-flex is-justify-content-center">
+    {% if request.user == bio.owner or request.user.is_superuser %}
+    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm  p-3 m-1"><i class="bi bi-printer mx-2"></i>طباعة تأييد</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
 {% endif %}

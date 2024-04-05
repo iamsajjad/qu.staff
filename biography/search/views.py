@@ -13,6 +13,7 @@ from publication.models import Publication
 from settings.models import Settings
 
 from search.query import text
+from home.status import status
 
 # Create your views here.
 
@@ -35,10 +36,7 @@ def search(request):
         response['settings'] = get_object_or_404(Settings, user=request.user)
 
         # footer status informations
-        response['status'] = {'bios':Bio.objects.count(),
-                              'links' : Link.objects.count(),
-                              'publications' : Publication.objects.count(),
-        }
+        response['status'] = status()
 
     return render(request, 'search.html', response)
 
@@ -86,10 +84,7 @@ def group(request):
         response['settings'] = get_object_or_404(Settings, user=request.user)
 
         # footer status informations
-        response['status'] = {'bios':Bio.objects.count(),
-                              'links' : Link.objects.count(),
-                              'publications' : Publication.objects.count(),
-        }
+        response['status'] = status()
 
     return render(request, 'search.html', response)
 

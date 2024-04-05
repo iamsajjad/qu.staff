@@ -10,6 +10,8 @@ from bio.models import Bio
 from link.models import Link
 from publication.models import Publication
 
+from home.status import status
+
 # Create your views here.
 
 # @cache_page(0)
@@ -36,10 +38,7 @@ def homepage(request):
         response['settings'] = get_object_or_404(Settings, user=request.user)
 
         # footer status informations
-        response['status'] = {'bios': Bio.objects.count(),
-                              'links': Link.objects.count(),
-                              'publications': Publication.objects.count(),
-        }
+        response['status'] = status()
 
     return render(request, 'home.html', response)
 

@@ -7,12 +7,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 
 from settings.models import Settings
-from bio.models import Bio
-from publication.models import Publication
-from link.models import Link
 
 from settings.forms import SettingsForm
 from user.forms import UserEditForm
+
+from home.status import status
 
 # Create your views here.
 
@@ -22,11 +21,9 @@ def settings(request):
 
     response = {
         'settings': get_object_or_404(Settings, user=request.user),
+
         # footer status informations
-        'status': {'bios': Bio.objects.count(),
-                   'links': Link.objects.count(),
-                   'publications': Publication.objects.count(),
-                   },
+        'status': status(),
     }
 
     return render(request, 'settings.html', response)

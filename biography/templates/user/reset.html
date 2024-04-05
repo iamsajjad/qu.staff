@@ -27,17 +27,23 @@
                 type="email"
                 placeholder="example@qu.edu.iq"
                 name="email"
+                required
               />
             </div>
             <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
               <div>
-                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="ResetForm">
+
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="ResetForm" onclick="this.disabled = true; document.getElementById('spinner').classList.add('spinner-grow'); document.getElementById('ResetForm').submit();">
+                  <span class="spinner-grow-sm" id="spinner" role="status" aria-hidden="true"></span>
+                  <span class="sr-only">
                   {% if LANGUAGE_CODE == 'en' %}
                   Send me a new password
                   {% else %}
                   أرسل لي كلمة المرور الجديدة عبر البريد
                   {% endif %}
+                  </span>
                 </button>
+
               </div>
             </div>
           </div>
