@@ -51,13 +51,14 @@
 <div class="box is-section mx-4 mb-6" id="links_part">
 
   {% for link in bio.links.all|sortsites %}
-  <div class="m-3 is-main-light-bg p-3" style="border-radius: 10px">
-    <p class="is-size-5 has-text-black has-text-left">{{ link.name }}</p>
-    <div class="is-flex is-links-container is-justify-content-space-between is-align-items-center is-full-width" > <div class="is-flex is-flex-direction-row">
-      <i class="bi bi-link has-text-light is-size-2"></i>
-      <div class="is-main mt-3 pt-2 ml-2 is-underlined" style="overflow-x: auto" >
+  <div class="m-3 p-3 is-main-light-bg is-flex is-links-container is-justify-content-space-between is-align-items-center">
+    <span class="is-size-5 has-text-black has-text-left">{{ link.name }}</span>
+    <div class="is-flex is-links-container is-justify-content-space-center is-align-items-center is-full-width" > <div class="is-flex is-flex-direction-row">
+      <i class="bi bi-link has-text-light is-size-2 mx-2"></i>
+      <div class="is-main is-underlined is-flex is-justify-content-space-between is-align-items-center" style="overflow-x: auto" >
         <a target="_blank" class="has-text-black" href="{{ link.url }}">{{ link.url }}</a>
       </div>
+    </div>
     </div>
       <div class="is-flex is-flex-direction-row" style="gap: 7px">
 
@@ -68,7 +69,6 @@
           class="bi bi-pencil is-mid-icon is-green link-trigger-edit is-clickable"></i>
 
       </div>
-    </div>
   </div>
 
   <form action="{% url 'edit_link' slug=settings.slug linkid=link.id %}" method="post">{% csrf_token %}

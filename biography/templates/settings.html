@@ -1,0 +1,80 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include './includes/head.html' %}
+    <title>UoQ | CV project</title>
+  </head>
+  <body>
+
+    {% include './includes/header.html' %}
+    {% include './includes/sidebar.html' %}
+    {% include './includes/logo.html' %}
+
+    <div class="mt-6">
+      <div class="is-flex is-flex-direction-column is-align-items-center is-flex-wrap-wrap">
+        <form id="passwordForm" action="{% url 'password' %}" method="post">{% csrf_token %}
+          <div class="box mb-4 is-half-width is-flex is-flex-direction-column is-align-items-center">
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <h5 class="is-main my-2">Change Password</h5>
+              <div class="is-block has-text-left my-3">
+                <p class="tag is-warning is-dark m-1">password must contain</p><br>
+                <p class="tag is-warning is-light m-1">uppercase letters</p><br>
+                <p class="tag is-warning is-light m-1">lowercase letters</p><br>
+                <p class="tag is-warning is-light m-1">number</p><br>
+                <p class="tag is-warning is-light m-1">special characters</p><br>
+                <p class="tag is-warning is-dark m-1">password must not be</p><br>
+                <p class="tag is-warning is-light m-1">similar to the email or the user name.</p>
+              </div>
+              {% else %}
+              <h5 class="is-main my-2 ">تغير كلمة السر</h5>
+              <div class="is-block has-text-right my-3">
+                <p class="tag is-warning is-dark m-1">الرمز السري يجب أن يحتوي</p><br>
+                <p class="tag is-warning is-light m-1">أحرف كبيرة</p><br>
+                <p class="tag is-warning is-light m-1">أحرف صغيرة</p><br>
+                <p class="tag is-warning is-light m-1">أرقام</p><br>
+                <p class="tag is-warning is-light m-1">رموز مختلفة</p><br>
+                <p class="tag is-warning is-dark m-1">الرمز السري يجب أن لايكون</p><br>
+                <p class="tag is-warning is-light m-1">مشابه لعنوان البريد أو أسم المستخدم</p>
+              </div>
+              {% endif %}
+              <input class="reg-input input" type="password" name="new_password1" />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <h5 class="is-main my-2">re-type Password</h5>
+              {% else %}
+              <h5 class="is-main my-2">أعد كتابة الرمز السري</h5>
+              {% endif %}
+              <input class="reg-input input is-full-width" type="password" name="new_password2" />
+            </div>
+            <div class="is-flex is-flex-direction-column my-3">
+              {% if LANGUAGE_CODE == 'en' %}
+              <h5 class="is-main my-2">Current Password</h5>
+              {% else %}
+              <h5 class="is-main my-2">كلمة المرور الحالية</h5>
+              {% endif %}
+              <input class="reg-input input is-full-width" type="password" name="old_password" />
+            </div>
+            <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+              <div>
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="passwordForm">
+                  {% if LANGUAGE_CODE == 'en' %}
+                  Change Password
+                  {% else %}
+                  تغير كلمة السر
+                  {% endif %}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% include './includes/footer.html' %}
+  </body>
+  <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</html>

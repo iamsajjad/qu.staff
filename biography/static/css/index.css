@@ -200,6 +200,10 @@ body {
 }
 .is-links-container {
   flex-direction: row;
+  border-radius: 10px;
+}
+.is-links-container span {
+  white-space: nowrap;
 }
 .is-arabic {
   text-align: center;
@@ -303,6 +307,11 @@ body {
 
 .logo {
   width: 230px;
+  color: #fdfff5;
+}
+
+.logo:hover {
+  color: #fdfff5;
 }
 
 .logo img {
@@ -320,7 +329,7 @@ body {
 .logo, .mainlogo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #fdfff5;
   font-family: "Nunito", sans-serif;
 }
 
@@ -329,7 +338,7 @@ body {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-  background-color: #fdfff5;
+  background-color: #4b58a0;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -339,7 +348,7 @@ body {
   font-size: 32px;
   padding-left: 10px;
   cursor: pointer;
-  color: #012970;
+  color: #fdfff5;
 }
 
 /*--------------------------------------------------------------

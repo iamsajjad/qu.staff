@@ -36,9 +36,9 @@ def homepage(request):
         response['settings'] = get_object_or_404(Settings, user=request.user)
 
         # footer status informations
-        response['status'] = {'bios':Bio.objects.count(),
-                              'links' : Link.objects.count(),
-                              'publications' : Publication.objects.count(),
+        response['status'] = {'bios': Bio.objects.count(),
+                              'links': Link.objects.count(),
+                              'publications': Publication.objects.count(),
         }
 
     return render(request, 'home.html', response)

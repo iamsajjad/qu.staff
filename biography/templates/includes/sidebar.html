@@ -82,6 +82,19 @@
 
     {% endif %}
 
+    {% if not request.user.is_anonymous %}
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{% url 'settings' %}">
+        <i class="bi bi-gear"></i>
+        {% if LANGUAGE_CODE == 'en' %}
+        <span>Settings</span>
+        {% else %}
+        <span>الأعدادات</span>
+        {% endif %}
+      </a>
+    </li>
+    {% endif %}
+
     {% if request.user.is_anonymous %}
     <li class="nav-item">
       <a class="nav-link collapsed" href="{% url 'register' %}">
