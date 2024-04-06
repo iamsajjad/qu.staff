@@ -1,0 +1,73 @@
+{% load i18n %}
+{% load static %}
+
+<div class="d-flex flex-row align-items-center justify-content-center flex-wrap is-full-width">
+{% for bio in bios.all %}
+{% if bio.full_name %}
+{% if LANGUAGE_CODE == 'en' %}
+<a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
+{% else %}
+<a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
+{% endif %}
+<div class="card text-white
+  {% if bio.degree == 'PhD' %}
+  card-success
+  {% elif bio.degree == 'MSc' %}
+  card-primary
+  {% else %}
+  card-secondary
+  {% endif %}
+  m-3 d-flex align-items-center justify-content-center" style="max-width: 18rem;">
+  <img class="is-min-image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
+  {% if LANGUAGE_CODE == 'en' %}
+  <div class="card-header">{{ bio.full_name }}</div>
+  {% else %}
+  <div class="card-header">{{ bio.ar_full_name }}</div>
+  {% endif %}
+  <div class="card-body">
+    {% if LANGUAGE_CODE == 'en' %}
+    <span class="my-3 is-black">{% if bio.academic_title %}<span class="tag m-1 is-primary is-light"> {{ bio.academic_title }}</span>{% endif %}</span>
+
+    {% if bio.degree %}
+    <span class="tag m-1 is-primary is-light">{{ bio.degree }}</span>
+    {% endif %}
+
+    {% if bio.specialty %}
+    <span class="tag m-1 is-info is-light overflow-hidden">{{ bio.specialty }}</span>
+    {% endif %}
+
+    <p class="card-text">{{ bio.college }}</p>
+
+    {% else %}
+
+    <span class="my-3 is-black">{% if bio.ar_academic_title %}<span class="tag m-1 is-primary is-light"> {{ bio.ar_academic_title }}</span>{% endif %}</span>
+
+    <span class="my-3 is-black">
+      {% if bio.degree %}
+        {% if bio.degree == 'PhD' %}
+        <span class="tag m-1 is-primary is-light">دكتوراه</span>
+        {% elif bio.degree == 'MSc' %}
+        <span class="tag m-1 is-primary is-light">ماجستير</span>
+        {% elif bio.degree == 'Higher Diploma' %}
+        <span class="tag m-1 is-primary is-light">دبلوم عالي</span>
+        {% else %}
+        <span class="tag m-1 is-primary is-light">بكلوريوس</span>
+        {% endif %}
+      {% endif %}
+    </span>
+
+    {% if bio.ar_specialty %}
+    <span class="tag m-1 is-info is-light overflow-hidden">{{ bio.ar_specialty }}</span>
+    {% endif %}
+
+    <p class="card-text">{{ bio.ar_college }}</p>
+
+    {% endif %}
+
+  </div>
+</div>
+</a>
+{% endif %}
+{% endfor %}
+</div>
+

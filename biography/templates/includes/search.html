@@ -1,0 +1,16 @@
+{% load i18n %}
+{% load static %}
+<div class="box is-section mx-6 my-3 p-2">
+  <form action="{% url 'search' %}" method="get">
+    <div class="input-group">
+        <input type="search" class="form-control rounded" aria-label="Search" name="query" aria-describedby="search-addon" autofocus
+          {% if LANGUAGE_CODE == 'en' %}
+          placeholder="Search for staff memeber here"
+          {% else %}
+          placeholder="أبحث عن أحد أعضاء الكادر هنا"
+          {% endif %}
+        />
+        <button type="submit" class="button btn btn-outline-primary"><i class="bi bi-search" aria-hidden="true"></i></button>
+    </div>
+  </form>
+</div>

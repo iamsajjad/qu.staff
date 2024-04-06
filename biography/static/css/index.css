@@ -31,13 +31,16 @@ body {
   padding-top: 218px;
 }
 .card-success {
-  background-color: rgba(var(--bs-success-rgb), 0.7) !important;
+  background-color: rgba(var(--bs-warning-rgb), 0.5) !important;
+  color: black !important;
 }
 .card-primary {
-  background-color: rgba(var(--bs-primary-rgb), 0.7) !important;
+  background-color: rgba(var(--bs-success-rgb), 0.5) !important;
+  color: black !important;
 }
 .card-secondary {
-  background-color: rgba(var(--bs-secondary-rgb), 0.7) !important;
+  background-color: rgba(var(--bs-info-rgb), 0.5) !important;
+  color: black !important;
 }
 .title-shadow {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
@@ -276,11 +279,12 @@ body {
   border-radius: 50%;
 }
 .is-min-image {
-  margin-top: 8px;
-  width: 80px;
-  height: 80px;
+  margin: 30px 0 15px 0;
+  width: 90px;
+  height: 90px;
   background-size: cover;
   border-radius: 50%;
+  border: 5px solid #ffffff;
 }
 .footer {
   position: sticky;

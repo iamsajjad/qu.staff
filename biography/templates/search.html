@@ -147,32 +147,7 @@
       </form>
     </div>
 
-    <div class="box is-section mx-6 my-3">
-      {% if LANGUAGE_CODE == 'en' %}
-      <h1 class="is-main is-font-md p-3">Search for a staff memeber</h1>
-      {% else %}
-      <h1 class="is-main  is-font-md p-3">البحث عن تدريسي</h1>
-      {% endif %}
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <div class="container columns is-full-width is-flex-wrap-wrap is-align-items-center">
-          <div class="column is-four-fifths is-flex is-flex-direction-column">
-            <form action="{% url 'search' %}" method="get">
-              <input class=" is-normal input " type="text" value="{{ query }}" name="query" type="text" autofocus
-                {% if LANGUAGE_CODE == 'en' %}
-                placeholder="Write the keyword here"
-                {% else %}
-                placeholder="أكتب الكلمة المفتاحية هنا"
-                {% endif %}
-                />
-            </form>
-            </div>
-            <div class="column is-flex is-flex-direction-column mx-2">
-              <button class="button is-normal" ><i class="bi bi-search" aria-hidden="true"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% include 'includes/search.html' %}
 
     {% if bios %}
 
@@ -188,75 +163,7 @@
         <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
       </div>
 
-      <div class="d-flex flex-row align-items-center justify-content-center flex-wrap is-full-width">
-      {% for bio in bios.all %}
-      {% if bio.full_name %}
-      {% if LANGUAGE_CODE == 'en' %}
-      <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}">
-      {% else %}
-      <a target="" href="/{{ LANGUAGE_CODE }}/@/{{ bio.slug }}" style="direction:rtl">
-      {% endif %}
-      <div class="card text-white
-        {% if bio.degree == 'PhD' %}
-        card-success
-        {% elif bio.degree == 'MSc' %}
-        card-primary
-        {% else %}
-        card-secondary
-        {% endif %}
-        m-3 d-flex align-items-center justify-content-center" style="max-width: 18rem;">
-        <img class="is-min-image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
-        {% if LANGUAGE_CODE == 'en' %}
-        <div class="card-header">{{ bio.full_name }}</div>
-        {% else %}
-        <div class="card-header">{{ bio.ar_full_name }}</div>
-        {% endif %}
-        <div class="card-body">
-          {% if LANGUAGE_CODE == 'en' %}
-          <span class="my-3 is-black">{% if bio.academic_title %}<span class="tag m-1 is-primary is-light"> {{ bio.academic_title }}</span>{% endif %}</span>
-
-          {% if bio.degree %}
-          <span class="tag m-1 is-primary is-light">{{ bio.degree }}</span>
-          {% endif %}
-
-          {% if bio.specialty %}
-          <span class="tag m-1 is-info is-light overflow-hidden">{{ bio.specialty }}</span>
-          {% endif %}
-
-          <p class="card-text">{{ bio.college }}</p>
-
-          {% else %}
-
-          <span class="my-3 is-black">{% if bio.ar_academic_title %}<span class="tag m-1 is-primary is-light"> {{ bio.ar_academic_title }}</span>{% endif %}</span>
-
-          <span class="my-3 is-black">
-            {% if bio.degree %}
-              {% if bio.degree == 'PhD' %}
-              <span class="tag m-1 is-primary is-light">دكتوراه</span>
-              {% elif bio.degree == 'MSc' %}
-              <span class="tag m-1 is-primary is-light">ماجستير</span>
-              {% elif bio.degree == 'Higher Diploma' %}
-              <span class="tag m-1 is-primary is-light">دبلوم عالي</span>
-              {% else %}
-              <span class="tag m-1 is-primary is-light">بكلوريوس</span>
-              {% endif %}
-            {% endif %}
-          </span>
-
-          {% if bio.ar_specialty %}
-          <span class="tag m-1 is-info is-light overflow-hidden">{{ bio.ar_specialty }}</span>
-          {% endif %}
-
-          <p class="card-text">{{ bio.ar_college }}</p>
-
-          {% endif %}
-
-        </div>
-      </div>
-      </a>
-      {% endif %}
-      {% endfor %}
-      </div>
+    {% include 'includes/cards.html' %}
 
     </div>
 
