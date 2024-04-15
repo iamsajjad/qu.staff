@@ -32,15 +32,16 @@ def reset(request):
             return redirect('signin')
 
         new_password = PASSWORD(12)
-        user.set_password(new_password)
-        user.save()
 
         # send the new password
-        subject = 'Qadisiyah University | Academic Staff | Password reset'
-        message = f'https://staff.qu.edu.iq\n\nYour Email : {user.email}\nThe new Password is : {new_password}'
+        subject = 'Qadisiyah University | Academic Staff | Password'
+        message = f'https://staff.qu.edu.iq\n\nYour Email :\n{user.email}\nThe new Password is :\n{new_password}'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [user.email]
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+
+        user.set_password(new_password)
+        user.save()
 
         return redirect('signin')
     else:

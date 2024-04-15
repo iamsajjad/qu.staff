@@ -30,16 +30,22 @@ body {
 .personal-img {
   padding-top: 218px;
 }
-.card-success {
-  background-color: rgba(var(--bs-warning-rgb), 0.5) !important;
+.staff-card {
+  max-width: 288px;
+  min-width: 288px;
+  min-height: 313px;
+  max-height: 313px;
+}
+.card-phd {
+  background-color: rgba(var(--bs-warning-rgb), 0.1) !important;
   color: black !important;
 }
-.card-primary {
-  background-color: rgba(var(--bs-success-rgb), 0.5) !important;
+.card-msc {
+  background-color: rgba(var(--bs-success-rgb), 0.1) !important;
   color: black !important;
 }
-.card-secondary {
-  background-color: rgba(var(--bs-info-rgb), 0.5) !important;
+.card-bsc {
+  background-color: rgba(var(--bs-danger-rgb), 0.1) !important;
   color: black !important;
 }
 .title-shadow {
@@ -284,7 +290,7 @@ body {
   height: 90px;
   background-size: cover;
   border-radius: 50%;
-  border: 5px solid #ffffff;
+  border: 5px solid #b3b3b3;
 }
 .footer {
   position: sticky;

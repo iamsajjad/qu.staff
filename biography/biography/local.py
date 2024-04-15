@@ -18,7 +18,7 @@ DEBUG = True
 ALLOWED_HOSTS = ('*', 'localhost', '127.0.0.1', )
 
 # allowed users from specific ORGs
-IS_ORG_EMAIL = lambda ue : any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve))
+IS_ORG_EMAIL = lambda ue : any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve) and not any(i.isdigit() for i in ue))
 
 # Application definition
 
@@ -153,7 +153,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'noreply@qu.edu.iq'
-EMAIL_HOST_PASSWORD = 'ihlw xuhv wsop bmhu '
+EMAIL_HOST_PASSWORD = 'ysnp zbuv kepn udps '
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

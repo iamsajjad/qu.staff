@@ -11,13 +11,13 @@
 {% endif %}
 <div class="card text-white
   {% if bio.degree == 'PhD' %}
-  card-success
+  card-phd
   {% elif bio.degree == 'MSc' %}
-  card-primary
+  card-msc
   {% else %}
-  card-secondary
+  card-bsc
   {% endif %}
-  m-3 d-flex align-items-center justify-content-center" style="max-width: 18rem;">
+  m-3 d-flex align-items-center justify-content-center staff-card">
   <img class="is-min-image" src="{{ bio.image.url }}" alt="{{ bio.full_name }}">
   {% if LANGUAGE_CODE == 'en' %}
   <div class="card-header">{{ bio.full_name }}</div>

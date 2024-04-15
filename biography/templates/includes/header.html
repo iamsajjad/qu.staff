@@ -9,8 +9,12 @@
     <i class="bi bi-list toggle-sidebar-btn"></i>
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'homepage' %}" class="logo d-flex align-items-center">
-        <img src="{% static 'assets/icons/quniv.svg' %}" alt="" >
+        {% if LANGUAGE_CODE == 'en' %}
         <span class="d-lg-block">University of<br>Al-Qadisiyah | Staff</span>
+        {% else %}
+        <span class="d-lg-block">جامعــــــــــــــــــــــــــــــــــة<br>القادسيـــــــــــــــــــــــــة | الكادر</span>
+        {% endif %}
+        <img class="mx-2" src="{% static 'assets/icons/quniv.svg' %}" alt="" >
       </a>
     </div><!-- End Logo -->
   </div><!-- End Logo -->

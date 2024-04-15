@@ -36,7 +36,7 @@
         {% if LANGUAGE_CODE == 'en' %}
         <span>Home</span>
         {% else %}
-        <span>الواجة الرئيسية</span>
+        <span>الصفحة الرئيسية</span>
         {% endif %}
 
       </a>
@@ -49,9 +49,9 @@
       <a class="nav-link collapsed" href="{% url 'edit' slug=settings.slug %}">
         <i class="bi bi-pencil-square"></i>
         {% if LANGUAGE_CODE == 'en' %}
-        <span>Edit Biography</span>
+        <span>Edit Profile</span>
         {% else %}
-        <span>تعديل السيرة الذاتية</span>
+        <span>تحرير الصفحة الشخصية</span>
         {% endif %}
       </a>
     </li>
@@ -60,9 +60,9 @@
       <a class="nav-link collapsed" href="{% url 'biopage' slug=settings.slug %}">
         <i class="bi bi-eye"></i>
         {% if LANGUAGE_CODE == 'en' %}
-        <span>View Biography</span>
+        <span>View Profile</span>
         {% else %}
-        <span>معاينة السيرة الذاتية</span>
+        <span>الصفحة الشخصية</span>
         {% endif %}
       </a>
     </li>
