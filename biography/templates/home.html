@@ -129,6 +129,27 @@
 
     {% include 'includes/search.html' %}
 
+    {% if admins %}
+
+    <div class="box is-section mx-6 my-3">
+
+      {% if LANGUAGE_CODE == 'en' %}
+      <div class="is-flex is-justify-content-start">
+        <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
+        <p class="is-main is-font-md p-3">The Platform Managers</p>
+      </div>
+      {% else %}
+      <div class="is-flex is-justify-content-end mb-4">
+        <p class="is-main is-font-md p-3 ">مدراء المنصة</p>
+        <i class="bi bi-people-fill is-main-icon link-trigger-edit is-clickable"></i>
+      </div>
+      {% endif %}
+
+    {% include 'includes/admins.html' %}
+
+    </div>
+    {% endif %}
+
     {% if bios %}
 
     <div class="box is-section mx-6 my-3">

@@ -36,6 +36,10 @@ body {
   min-height: 313px;
   max-height: 313px;
 }
+.card-admin {
+  background-color: #FFFFFF !important;
+  color: black !important;
+}
 .card-phd {
   background-color: rgba(var(--bs-warning-rgb), 0.1) !important;
   color: black !important;
@@ -45,7 +49,7 @@ body {
   color: black !important;
 }
 .card-bsc {
-  background-color: rgba(var(--bs-danger-rgb), 0.1) !important;
+  background-color: rgba(var(--bs-info-rgb), 0.1) !important;
   color: black !important;
 }
 .title-shadow {

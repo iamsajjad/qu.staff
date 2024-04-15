@@ -32,6 +32,7 @@ def homepage(request):
 
     response = {
         'bios': bios,
+        'admins': Bio.objects.filter(owner__is_superuser=True),
     }
 
     if not request.user.is_anonymous:
