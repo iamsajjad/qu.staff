@@ -56,7 +56,8 @@ def register(request):
     if request.method == 'POST':
 
         udpost = request.POST.copy()
-        udpost['username'] = request.POST['email']
+        udpost['username'] = request.POST['email'].lower()
+        udpost['email'] = request.POST['email'].lower()
         request.POST = udpost
 
         user = UserRegisterForm(request.POST)
@@ -94,8 +95,8 @@ def signin(request):
 
     if request.method == 'POST':
 
-        username = request.POST.get('email', '')
-        password = request.POST.get('password', '')
+        username = request.POST.get('email', '').lower()
+        password = request.POST.get('password', '').lower()
 
         user = authenticate(request, username=username, password=password)
 
