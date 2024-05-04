@@ -47,7 +47,7 @@
   </div>
 </form>
 
-{% if bio.links.all %}
+{% if bio.links.all|sortsites %}
 <div class="box is-section mx-4 mb-6" id="links_part">
 
   {% for link in bio.links.all|sortsites %}

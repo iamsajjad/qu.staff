@@ -2,7 +2,7 @@
 REQUIREDSITES = {
     'Google Scholar':       'https://scholar.google.com/citations?user=',
     'Research Gate':        'https://www.researchgate.net/profile/',
-    'Publons':              'https://publons.com/researcher/',
+    'Web of Science':       'https://www.webofscience.com/wos/author/record/',
     'SCOPUS ID':            'https://www.scopus.com/authid/detail.uri?authorId=',
     'ORCID ID':             'https://orcid.org/',
     'Repository.qu.edu.iq': 'https://repository.qu.edu.iq/',
