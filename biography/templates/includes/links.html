@@ -36,22 +36,24 @@
 
 {% endif %}
 
-{% if bio.links.all|isdone %}
-<div class="box is-section mx-6 my-4">
+{% if bio.full_name %}
+  {% if bio.links.all|isdone %}
+  <div class="box is-section mx-6 my-4">
 
-  {% if LANGUAGE_CODE == 'en' %}
-  <div class="is-flex is-justify-content-center">
-    {% if request.user == bio.owner or request.user.is_superuser %}
-    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm p-3 m-1">Print endorsement<i class="bi bi-printer mx-2"></i></a>
+    {% if LANGUAGE_CODE == 'en' %}
+    <div class="is-flex is-justify-content-center">
+      {% if request.user == bio.owner or request.user.is_superuser %}
+      <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm p-3 m-1">Print endorsement<i class="bi bi-printer mx-2"></i></a>
+      {% endif %}
+    </div>
+    {% else %}
+    <div class="is-flex is-justify-content-center">
+      {% if request.user == bio.owner or request.user.is_superuser %}
+      <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm  p-3 m-1"><i class="bi bi-printer mx-2"></i>طباعة تأييد</a>
+      {% endif %}
+    </div>
     {% endif %}
-  </div>
-  {% else %}
-  <div class="is-flex is-justify-content-center">
-    {% if request.user == bio.owner or request.user.is_superuser %}
-    <a href="{% url 'printpage' slug=bio.slug %}" class="button is-warning is-font-sm  p-3 m-1"><i class="bi bi-printer mx-2"></i>طباعة تأييد</a>
-    {% endif %}
+
   </div>
   {% endif %}
-
-</div>
 {% endif %}
