@@ -35,7 +35,7 @@ def reset(request):
 
         # send the new password
         subject = 'Qadisiyah University | Academic Staff | Password'
-        message = f'https://staff.qu.edu.iq\n\nYour Email :\n{user.email}\nThe new Password is :\n{new_password}'
+        message = f'https://staff.qu.edu.iq/ar/user/signin\n\nYour Email :\n{user.email}\nThe new Password is :\n{new_password}'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [user.email]
         send_mail(subject, message, from_email, recipient_list, fail_silently=True)
@@ -55,9 +55,13 @@ def register(request):
 
     if request.method == 'POST':
 
+        gen_password = PASSWORD(12)
+
         udpost = request.POST.copy()
         udpost['username'] = request.POST['email'].lower()
         udpost['email'] = request.POST['email'].lower()
+        udpost['password1'] = gen_password
+        udpost['password2'] = gen_password
         request.POST = udpost
 
         user = UserRegisterForm(request.POST)
@@ -80,9 +84,14 @@ def register(request):
             user_bio.slug = slug(user.email)
             user_bio.save()
 
-            login(request, user)
+            # send the account details to user email
+            subject = 'Qadisiyah University | Academic Staff | Account'
+            message = f'https://staff.qu.edu.iq/ar/user/signin\n\nYour Email :\n{user.email}\nYour Password is :\n{gen_password}'
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [user.email]
+            send_mail(subject, message, from_email, recipient_list, fail_silently=True)
 
-            return redirect('biopage', user_settings.slug)
+            return redirect('signin')
     else:
 
         return render(request, 'user/register.html')

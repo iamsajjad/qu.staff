@@ -55,48 +55,24 @@
                   name="email"
                   />
             </div>
-            <div class="is-flex is-flex-direction-column my-3">
+            <div class="is-block has-text-left my-3">
               {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-sm">Password</p>
-              <div class="is-block has-text-left my-3">
-                <p class="tag is-warning is-dark is-font-sm m-1">password must contain</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">uppercase letters</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">lowercase letters</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">number</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">special characters</p><br>
-                <p class="tag is-warning is-dark is-font-sm m-1">password must not be</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">similar to the email or the user name.</p>
-              </div>
+              <p class="tag is-warning is-dark is-font-sm m-1">The Account details and Password will be send to your email</p>
               {% else %}
-              <p class="is-main my-2  is-font-sm">الرمز السري</p>
-              <div class="is-block has-text-right my-3">
-                <p class="tag is-warning is-dark is-font-sm m-1">الرمز السري يجب أن يحتوي</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">أحرف كبيرة</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">أحرف صغيرة</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">أرقام</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">رموز مختلفة</p><br>
-                <p class="tag is-warning is-dark is-font-sm m-1">الرمز السري يجب أن لايكون</p><br>
-                <p class="tag is-warning is-light is-font-sm m-1">مشابه لعنوان البريد أو أسم المستخدم</p>
-              </div>
+              <p class="tag is-warning is-dark is-font-sm m-1">سيتم إرسال تفاصيل الحساب وكلمة المرور إلى بريدك الإلكتروني</p>
               {% endif %}
-              <input class="reg-input input is-normal" type="password" name="password1" />
-            </div>
-            <div class="is-flex is-flex-direction-column my-3">
-              {% if LANGUAGE_CODE == 'en' %}
-              <p class="is-main my-2 is-font-sm">re-type Password</p>
-              {% else %}
-              <p class="is-main my-2  is-font-sm">أعد كتابة الرمز السري</p>
-              {% endif %}
-              <input class="reg-input input is-normal is-full-width" type="password" name="password2" />
             </div>
             <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
               <div>
-                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="registerForm">
+                <button class="button my-4 is-main-bg is-rounded is-white" type="submit" form="registerForm" onclick="this.disabled = true; document.getElementById('spinner').classList.add('spinner-grow'); document.getElementById('registerForm').submit();">
+                  <span class="spinner-grow-sm" id="spinner" role="status" aria-hidden="true"></span>
+                  <span class="sr-only">
                   {% if LANGUAGE_CODE == 'en' %}
                   Register
                   {% else %}
                   أنشاء حساب
                   {% endif %}
+                  </span>
                 </button>
               </div>
             </div>

@@ -18,7 +18,7 @@ DEBUG = True
 ALLOWED_HOSTS = ('https://staff.qu.edu.iq', 'http://staff.qu.edu.iq', 'staff.qu.edu.iq', 'localhost', '127.0.0.1', '*',)
 
 # allowed users from specific ORGs
-IS_ORG_EMAIL = lambda ue : any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve))
+IS_ORG_EMAIL = lambda ue : True #any(True for ve in ('@qu.edu.iq',) if ue.endswith(ve))
 
 # Application definition
 
